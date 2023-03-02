@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import DisplayNameLogo from '../../../expo-app/components/displayNameLogo'
+// import DisplayNameLogo from '../../../expo-app/components/displayNameLogo'
 import { Nav, Navbar } from 'react-bootstrap'
 import Sidebar from '../components/base/Sidebar'
 

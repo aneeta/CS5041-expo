@@ -234,4 +234,4 @@ class Sidebar extends Component {
 
 }
 
-export default withRouter(Sidebar);
+// export default withRouter(Sidebar);

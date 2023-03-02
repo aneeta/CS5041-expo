@@ -21,6 +21,12 @@ export default function App() {
       </Routes>
     </BrowserRouter>
 
+    // <View>
+    //   <Text>
+    //     helllo
+    //   </Text>
+
+    // </View>
   );
 }
 
