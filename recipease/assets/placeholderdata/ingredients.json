@@ -1,0 +1,22 @@
+{
+    "0": {
+        "name": "egg",
+        "type": "dairy",
+        "storage": "fresh"
+    },
+    "1": {
+        "name": "butter",
+        "type": "dairy",
+        "storage": "fresh"
+    },
+    "2": {
+        "name": "salt",
+        "type": "seasoning",
+        "storage": "cupboard"
+    },
+    "3": {
+        "name": "apple",
+        "type": "fruit",
+        "storage": "fresh"
+    }
+}

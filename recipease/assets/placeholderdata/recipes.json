@@ -1,0 +1,31 @@
+{
+    "0": {
+        "name": "Omlette",
+        "cuisine": ["European"],
+        "author": "countchocula",
+        "coverImg": "https://res.cloudinary.com/practicaldev/image/fetch/s--jLNlFqD3--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/367978/cd8f8d25-2382-4957-8f18-417a61814d68.png",
+        "portions": 1,
+        "ingredients": {
+            "0": {
+                "amount": 2,
+                "required": true
+            },
+            "1": {
+                "amount": 1,
+                "unit": "tsp",
+                "required": false
+            },
+            "2": {
+                "amount": 0.25,
+                "unit": "tsp",
+                "required": false
+            }
+        },
+        "method": [
+            "Preheat the pan",
+            "Whisk the eggs",
+            "Melt butter in the pan",
+            "Pour egg mixture into the pan, stir until cooked through"
+        ]
+    }
+}
