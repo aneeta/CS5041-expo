@@ -1,8 +1,34 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Collapse } from 'react-bootstrap';
 import { Dropdown } from 'react-bootstrap';
 // import { Trans } from 'react-i18next';
+
+
+//withRouter was abandoned in new react router dom. Build the old withRouter here.
+import {
+    useLocation,
+    useNavigate,
+    useParams
+  } from "react-router-dom";
+
+  function withRouter(Component) {
+    function ComponentWithRouterProp(props) {
+      let location = useLocation();
+      let navigate = useNavigate();
+      let params = useParams();
+      return (
+        <Component
+          {...props}
+          router={{ location, navigate, params }}
+        />
+      );
+    }
+  
+    return ComponentWithRouterProp;
+  }
+
+
 
 class Sidebar extends Component {
     state = {};
@@ -234,4 +260,4 @@ class Sidebar extends Component {
 
 }
 
-// export default withRouter(Sidebar);
+export default withRouter(Sidebar);

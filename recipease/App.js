@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Layout from './src/pages/layout';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
+import Sidebar from './src/components/base/Sidebar';
 
 // export default function App() {
 //   return (
@@ -15,18 +16,17 @@ import { Routes } from 'react-router-dom';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Layout>Hello!</Layout>} />
-      </Routes>
-    </BrowserRouter>
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route path='/' element={<Layout>Hello!</Layout>} />
+    //   </Routes>
+    // </BrowserRouter>
+    <View>
+      Hello
+      
+    </View>
+    
 
-    // <View>
-    //   <Text>
-    //     helllo
-    //   </Text>
-
-    // </View>
   );
 }
 
