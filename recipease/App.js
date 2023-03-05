@@ -9,6 +9,7 @@ import AddIngPage from './src/pages/addIngredient';
 import IngPage from './src/pages/ingredients';
 
 
+
 class App extends Component {
   render() {
     return (
