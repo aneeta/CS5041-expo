@@ -1,0 +1,14 @@
+import React, { Component } from 'react';
+import  './RecipeCard.css';
+
+class RecipeCard extends Component{
+
+    render(){
+        return(
+            <div className='card-container'>
+
+            </div>
+        );
+    }
+}
+export default RecipeCard;

@@ -1,0 +1,10 @@
+.cards-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards-box{
+    /* make cards display like 3 columns grid */
+    background-color: rgb(146, 146, 198);
+}
