@@ -42,25 +42,7 @@ import ProfilePage from './src/pages/profile';
 //   );
 // }
 
-<<<<<<< HEAD
-export default function App() {
 
-  return (
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path='/' element={<Layout>Hello!</Layout>} />
-    //   </Routes>
-    // </BrowserRouter>
-    <div style={{display:'flex',flexDirection:'column',width: '100%'}}>
-      <UserHeader></UserHeader>
-
-      <CardBox></CardBox>
-      
-      
-    </div>
-
-  );
-=======
 class App extends Component {
   render() {
     return (
@@ -84,16 +66,7 @@ class App extends Component {
       
     )
   }
->>>>>>> d9d20a36a65ec37334b8d38e4eb545588e5ac199
 }
 
 export default App;
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
