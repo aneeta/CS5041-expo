@@ -7,12 +7,15 @@ import {
 
   } from '@ant-design/icons';
 
+// important: when using UserHeader, the parent container must set width:100%
+// otherwise the items in UserHeader will squeezed together.
+
 
 class UserHeader extends Component{
 
     render(){
         return(
-        <div style={{display:'flex', flexDirection:'column'}}>
+        <div style={{display:'flex', flexDirection:'column', width:'100%'}}>
             <div  className='user-header-container'>
                 <div className='user-header'>
                     <div className='user-avatar-box'>

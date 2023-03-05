@@ -1,8 +1,18 @@
 .card-container{
-    background-color: rgb(52, 90, 143);
+    background-color: #345a8f;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 150px;
-    height: 200px;
+
+
+    min-width: 300px;
+    width: auto!important;
+    width: 33.33%;
+
+
+    min-height: 450px;
+    max-height: 500px;
+    height: auto!important;
+    height: 70%;
+    border: 1px solid black;
 }

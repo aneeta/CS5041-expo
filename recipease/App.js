@@ -4,6 +4,10 @@ import Layout from './src/pages/layout';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import Sidebar from './src/components/base/Sidebar';
+import UserHeader from './src/components/base/UserHeader';
+import RecipeCard from './src/components/base/RecipeCard';
+import CardBox from './src/components/base/CardBox';
+
 
 // export default function App() {
 //   return (
@@ -15,27 +19,30 @@ import Sidebar from './src/components/base/Sidebar';
 // }
 
 export default function App() {
+
   return (
     // <BrowserRouter>
     //   <Routes>
     //     <Route path='/' element={<Layout>Hello!</Layout>} />
     //   </Routes>
     // </BrowserRouter>
-    <View>
-      Hello
+    <div style={{display:'flex',flexDirection:'column',width: '100%'}}>
+      <UserHeader></UserHeader>
+
+      <CardBox></CardBox>
       
-    </View>
-    
+      
+    </div>
 
   );
 }
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
