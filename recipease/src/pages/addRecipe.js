@@ -1,9 +1,9 @@
 import BaseLayout from "../components/base/Layout";
-import AddRecipe from "../components/recipe/addRecipe";
+import RecipeSteps from "../components/recipe/addRecipe/recipeSteps";
 
 const AddRecipePage = (props) => (
     <BaseLayout>
-        <AddRecipe />
+        <RecipeSteps />
     </BaseLayout>
 )
 

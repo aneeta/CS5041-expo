@@ -1,9 +1,8 @@
-import * as React from 'react';
 import { useState } from 'react';
 import { Avatar, Card } from 'react-native-paper';
-import InfoForm from './addRecipe/forms/info'
-import IngredientForm from './addRecipe/forms/ingredient'
-import MethodForm from './addRecipe/forms/method'
+import InfoForm from './addRecipe/old_forms/info'
+import IngredientForm from './addRecipe/old_forms/ingredient'
+import MethodForm from './addRecipe/old_forms/method'
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
@@ -12,43 +11,71 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import RecipeSteps from './addRecipe/recipeSteps';
 
 const steps = ['Info', 'Ingredients', 'Method'];
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <InfoForm />;
-    case 1:
-      return <IngredientForm />;
-    case 2:
-      return <MethodForm />;
-    default:
-      throw new Error('Unknown step');
+// export default function AddRecipeOld(props) {
+function AddRecipeOld(props) {
+
+
+  const inputSchema = {
+    'info': {
+      recipeName: "",
+      coverUrl: "",
+      cuisine: "",
+      flavor: "",
+    },
+    'ingredients': {},
+    'method': {}
   }
-}
 
-
-export default function AddRecipe(props) {
+  const step = Object.keys(inputSchema)
 
   const [activeStep, setActiveStep] = useState(0);
+  // collect inputs
+  const [infoData, setInfoData] = useState();
+  const [ingData, setIngData] = useState();
+  const [methodData, setMethodData] = useState();
 
+
+  const handleInfoInputChange = (newValue) => {
+    setInfoData(newValue);
+    console.log(infoData)
+  }
+  // const handleIngInputChange = 
+  // const handleMethodInputChange = 
+
+  function getStepContent(step) {
+    switch (step) {
+      case 0:
+        return <InfoForm onInputChange={(newValue) => { setInfoData(newValue) }} />;
+      case 1:
+        return <IngredientForm onInputChange={(newValue) => { setIngData(newValue) }} />;
+      case 2:
+        return <MethodForm onInputChange={(newValue) => { setMethodData(newValue) }} />;
+      default:
+        throw new Error('Unknown step');
+    }
+  }
   // const [
   //     recipeName
   // ]
 
-  let recipeData = {}
 
-  const handleNext = (data) => {
-    setActiveStep(activeStep + 1);
-    console.log(data)
-
-  };
-
-  const handleBack = (data) => {
+  const handleBack = () => {
     setActiveStep(activeStep - 1);
-    console.log(data)
   };
+
+  const handleNext = () => {
+    setActiveStep(activeStep + 1);
+    console.log({
+      "info": infoData,
+      "ing": ingData,
+      "method": methodData
+    })
+  };
+
 
   return (
     <>
@@ -76,6 +103,19 @@ export default function AddRecipe(props) {
           ) : (
             <React.Fragment>
               {getStepContent(activeStep)}
+              {/* {() => {
+                switch (activeStep) {
+                  case 0:
+                    return <InfoForm onInputChange={(newValue) => { setInfoData(newValue) }} />;
+                  case 1:
+                    return <IngredientForm onInputChange={(newValue) => { setIngData(newValue) }} />;
+                  case 2:
+                    return <MethodForm onInputChange={(newValue) => { setMethodData(newValue) }} />;
+                  default:
+                    throw new Error('Unknown step');
+                }
+              }
+              } */}
               <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 {activeStep !== 0 && (
                   <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
@@ -124,4 +164,21 @@ export default function AddRecipe(props) {
   //     //     </form>
   //     // </div>
   // )
+}
+
+export default function AddRecipe(props) {
+  return (
+    <RecipeSteps />
+
+    // <>
+    //   <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+    //     <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+    //       <Typography component="h1" variant="h4" align="center">
+    //         Add Recipe
+    //       </Typography>
+    //       <RecipeSteps />
+    //     </Paper>
+    //   </Container>
+    // </>
+  )
 }
