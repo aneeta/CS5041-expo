@@ -1,20 +1,84 @@
 .card-container{
-    background-color: #345a8f;
+    /* background-color: #345a8f; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 
 
-    min-width: 300px;
+    /* min-width: 300px;
     width: auto!important;
-    width: 33.33%;
+    width: 33.33%; */
+    width: 300px;
 
 
     min-height: 450px;
     max-height: 500px;
     height: auto!important;
     height: 70%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 
     
+}
+
+.card-inner-box{
+    width: 90%;
+    height: 100%;
+
+    margin: 20px;
+    background-color: #e4e4e4;
+    border-radius: 15px;
+}
+
+.card-img-box{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+
+
+    border-radius: 15px;
+}
+.card-img{
+
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card-user{
+    display: flex;
+    width: 100%;
+    height: 12.5%;
+    /* background-color: #7e6b6c; */
+}
+.card-avatar-box{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.card-avatar{
+    width: 45px;
+    height:45px;
+    border-radius: 22.5px;
+}
+.card-username{
+
+}
+
+.card-text-box{
+    
+    width: 100%;
+    height: 17.5%;
+    
+    
+}
+.card-text{
+    width: 100%;
+    height: 100%;
+    margin-left: 10px;
+    margin-top: 5px;
+    /* background-color: rgb(7, 85, 85); */
 }
