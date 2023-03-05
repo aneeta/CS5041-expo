@@ -42,6 +42,7 @@ import ProfilePage from './src/pages/profile';
 //   );
 // }
 
+
 class App extends Component {
   render() {
     return (
@@ -69,11 +70,3 @@ class App extends Component {
 
 export default App;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
