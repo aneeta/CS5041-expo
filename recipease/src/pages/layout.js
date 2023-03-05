@@ -1,7 +1,7 @@
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // import DisplayNameLogo from '../../../expo-app/components/displayNameLogo'
-// import { Nav, Navbar } from 'react-bootstrap'
-// import Sidebar from '../components/base/Sidebar'
+import { Nav, Navbar } from 'react-bootstrap'
+import Sidebar from '../components/base/Sidebar'
 
 // const Header = () => {
 //     // const logoSrc = require("../assets/favicon.png") //TODO

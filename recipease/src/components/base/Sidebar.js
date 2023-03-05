@@ -314,5 +314,3 @@ export default Sidebar;
 //     }
 
 // }
-
-// export default withRouter(Sidebar);

@@ -9,7 +9,21 @@ Navigate to `recipease` and run:
 ```
 npm start
 ```
+## Errors
 
+1. `ConfigError: Cannot determine which native SDK version your project uses because the module `expo` is not installed. Please install it with `yarn add expo` and try again.`
+- Make sure yarn is installed (`npm install --global yarn`)
+- Install expo using yarn (`yarn add expo`)
+
+## Warnings
+1. after fixed Error 1, when lauching the program it said: 
+`Some dependencies are incompatible with the installed expo version:
+  react@18.1.0 - expected version: 18.2.0
+  react-native@0.70.5 - expected version: 0.71.3
+Your project may not work correctly until you install the correct versions of the packages.
+Install individual packages by running npx expo install react@18.2.0 react-native@0.71.3`
+
+-I installed the suggested version after the warning. (JY)
 
 # Note
 not for anything tbh
