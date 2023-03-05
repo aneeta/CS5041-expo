@@ -12,6 +12,7 @@ class CardBox extends Component{
                     <RecipeCard></RecipeCard>
                     <RecipeCard></RecipeCard>
                     <RecipeCard></RecipeCard>
+                    
             </div>
           </div>  
         );

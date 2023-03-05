@@ -14,6 +14,7 @@ class RecipeCard extends Component{
                 </div>
                 <div className='card-text'>
 
+
                 </div>
             </div>
         );
