@@ -78,7 +78,7 @@ const BaseLayout = (props) => (
         <Content className="site-layout" style={{ padding: '0 50px', overflow: "initial" }}>
         <div style={{ padding: 24, minHeight: 500}}>{props.children}</div>
       </Content>
-      <Footer style={footerStyle}>Footer</Footer>
+      {/* <Footer style={footerStyle}>Footer</Footer> */}
       </Layout>
     </Layout>
   </Space>
