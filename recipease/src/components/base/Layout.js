@@ -4,6 +4,12 @@ import AppLogo from './Logo';
 
 import { Avatar, Card, IconButton } from 'react-native-paper';
 import Sidebar from './Sidebar';
+import './Layout.css'
+import {
+
+
+} from '@ant-design/icons';
+
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -40,14 +46,33 @@ const BaseLayout = (props) => (
   <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
     <Layout hasSider>
       <Sidebar/>
-      <Layout
-        className="site-layout"
-        style={{
-          marginLeft: 200,
-        }}
-      >
-        <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%'}}>
-        <div
+        <Layout
+          className="site-layout"
+          style={{
+            marginLeft: 200,
+          }}
+        >
+        <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%',display:"flex"}}>
+          <div className='header-box'>
+            <div className='header-holder'></div>
+            <div className='header-brand'>
+              <span style={{
+                color:"white",
+                fontFamily: "sans-serif",
+                fontSize:"xx-large",
+                }} >
+                Recipe
+              </span>
+
+              {/*  */}
+
+
+            </div>
+          </div>
+
+
+
+        {/* <div
           style={{
             float: 'right',
             width: 150,
@@ -56,15 +81,16 @@ const BaseLayout = (props) => (
             background: 'rgba(255, 255, 255, 0.2)',
           }}
         >
-          <Card.Title
-    title="Recipease"
-    titleStyle={{}}
-    right={(props) => <Avatar.Icon {...props} icon="folder" />}
-    rightStyle={{}}
-  />
-          {/* <Avatar.Icon size={24} icon="folder" /> */}
-          {/* <AppLogo color='white'/> */}
-        </div>
+            <Card.Title
+              title="Recipease"
+              titleStyle={{}}
+              right={(props) => <Avatar.Icon {...props} icon="folder" />}
+              rightStyle={{}}
+            /> */}
+            {/* <Avatar.Icon size={24} icon="folder" /> */}
+            {/* <AppLogo color='white'/> */}
+        {/* </div> */}
+
         {/* <Menu
           theme="dark"
           mode="horizontal"
@@ -75,6 +101,9 @@ const BaseLayout = (props) => (
           }))}
         /> */}
         </Header>
+
+
+        
         <Content className="site-layout" style={{ padding: '0 50px', overflow: "initial" }}>
         <div style={{ padding: 24, minHeight: 500}}>{props.children}</div>
       </Content>
