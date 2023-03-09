@@ -37,7 +37,8 @@ npm start
 }`
 
 - Cause: wrong node.js;
-- Solution: refer to tutorial4 pdf, switch to the right node.
+- Solution: run the command: . /cs/studres/CS5041/Tutorials/setup_node.sh
+            refer to tutorial4 pdf, switch to the right node. 
 
 
 ## Warnings

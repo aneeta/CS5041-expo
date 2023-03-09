@@ -12,10 +12,25 @@
 }
 .header-brand{
     display: flex;
-    background-color: blue;
     width: 15%;
     height: 100%;
 }
 .header-text{
     color:white;
+}
+.header-icon-box{
+    width: 50%;
+    height: 100%;
+}
+.header-icon{
+    margin-left: 10px;
+    margin-top:8px;
+    font-size: 45px;
+    color: white;
+}
+
+.content-container{
+    padding: 0 50px;
+    overflow : initial; 
+    background-color:rgb(226, 226, 226) ;
 }

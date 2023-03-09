@@ -6,7 +6,7 @@ import { Avatar, Card, IconButton } from 'react-native-paper';
 import Sidebar from './Sidebar';
 import './Layout.css'
 import {
-
+  CoffeeOutlined,
 
 } from '@ant-design/icons';
 
@@ -43,9 +43,10 @@ const footerStyle = {
 
 
 const BaseLayout = (props) => (
-  <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
-    <Layout hasSider>
-      <Sidebar/>
+
+  <div style={{height:"100%"}}>
+    <Layout hasSider style={{height:"100%"}}>
+        <Sidebar/>
         <Layout
           className="site-layout"
           style={{
@@ -63,21 +64,19 @@ const BaseLayout = (props) => (
                 }} >
                 Recipe
               </span>
-
-              {/*  */}
-
-
+              <div className='header-icon-box'>
+                <CoffeeOutlined className='header-icon'/>
+              </div>
             </div>
           </div>
-
-
 
         {/* <div
           style={{
             float: 'right',
             width: 150,
             height: 36,
-            margin: '16px 24px 16px 0',
+            margin: '16px 24px 16px 0',<Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%',display:"flex"}}>
+        
             background: 'rgba(255, 255, 255, 0.2)',
           }}
         >
@@ -104,13 +103,14 @@ const BaseLayout = (props) => (
 
 
         
-        <Content className="site-layout" style={{ padding: '0 50px', overflow: "initial" }}>
+        <Content className="content-container" >
         <div style={{ padding: 24, minHeight: 500}}>{props.children}</div>
       </Content>
       {/* <Footer style={footerStyle}>Footer</Footer> */}
       </Layout>
     </Layout>
-  </Space>
+  </div>
+
 );
 
 export default BaseLayout;
