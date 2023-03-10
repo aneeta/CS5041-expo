@@ -104,7 +104,7 @@ const BaseLayout = (props) => (
 
         
         <Content className="content-container" >
-        <div style={{ padding: 24, minHeight: 500}}>{props.children}</div>
+        <div className='content-innerbox'>{props.children}</div>
       </Content>
       {/* <Footer style={footerStyle}>Footer</Footer> */}
       </Layout>

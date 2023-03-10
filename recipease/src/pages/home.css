@@ -1,0 +1,43 @@
+.home-container{
+    width: 100%;
+    height: 100%;
+
+}
+.user-log{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    padding-top: 1%;
+
+}
+.avatar-style{
+    font-size: 30px;
+}
+.search-bar{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2%;
+}
+.search-brand{
+    display: flex;
+
+}
+.search-icon{
+    margin-left: 10px;
+    padding-bottom: 5%;
+    font-size: 40px;
+}
+.search-input{
+    width: 60%;
+}
+.recipe-box{
+    width: 100%;
+    height: auto;
+
+}
+
+

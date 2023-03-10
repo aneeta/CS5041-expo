@@ -34,3 +34,8 @@
     overflow : initial; 
     background-color:rgb(226, 226, 226) ;
 }
+.content-innerbox{
+    padding: 24;
+    height:auto;
+    min-height: 500;
+}

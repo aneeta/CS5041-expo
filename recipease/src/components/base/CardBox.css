@@ -18,8 +18,8 @@
     width: 60%;
 
     /* the height will be adjust with the data; the box will have a scroll bar */
-    height: 100%;
-    /* background-color: rgb(218, 120, 128); */
+    height: auto;
+
 
     
 }
