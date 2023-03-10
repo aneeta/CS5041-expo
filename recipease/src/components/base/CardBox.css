@@ -2,21 +2,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: auto;
     height: 100%;
 }
 
 .cards-box{
-    /* make cards display like 3 columns grid */
     display:flex;
     flex-flow: row wrap;
-
-
-    max-width: 920px;
-    min-width: 910px;
-    width: auto!important;
+    /* max-width: 1080px;
+    min-width: 1070px; */
+    /* width: auto!important; */
     width: 60%;
-
+    /* background-color: rgb(127, 142, 192); */
     /* the height will be adjust with the data; the box will have a scroll bar */
     height: auto;
 

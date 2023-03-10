@@ -14,7 +14,6 @@ const onSearch = () => console.log("function not complete");
 
 const HomePage = (props) => (
     <BaseLayout >
-        {/* <h1>Home</h1> */}
     <div className="home-container">
         <div className="user-log">
             <UserOutlined className="avatar-style"/>

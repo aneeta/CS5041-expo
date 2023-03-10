@@ -1,0 +1,16 @@
+.profile-container{
+    width: 100%;
+    height: 100%;
+
+}
+.user-header{
+    display: flex;
+    width: 100%;
+    height: 20%;
+}
+.user-content{
+    width: 100%;
+    height: auto;
+    margin-top: 1%;
+
+}

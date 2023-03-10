@@ -8,20 +8,20 @@
     /* min-width: 300px;
     width: auto!important;
     width: 33.33%; */
-    width: 300px;
+    width: 33.33%;
 
 
     min-height: 450px;
     max-height: 500px;
     height: auto!important;
     height: 70%;
-    /* border: 1px solid black; */
+
 
     
 }
 
 .card-inner-box{
-    width: 90%;
+    width: 85%;
     height: 100%;
 
     margin: 20px;
@@ -63,9 +63,6 @@
     width: 45px;
     height:45px;
     border-radius: 22.5px;
-}
-.card-username{
-
 }
 
 .card-text-box{
