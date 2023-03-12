@@ -4,8 +4,9 @@ import { useState } from 'react';
 
 import InfoForm from './forms/info';
 import IngredientForm from './old_forms/ingredient';
-import MethodForm from './old_forms/method';
+import MethodForm from './forms/method';
 import CustomStepper from '../../base/Stepper';
+import IngForm from './forms/ingredient';
 
 const steps = [
     {
@@ -15,11 +16,12 @@ const steps = [
     },
     {
         title: 'Ingredients',
-        // content: IngredientForm(),
+        content: <IngForm />,
         // icon: <SolutionOutlined />,
     },
     {
         title: 'Method',
+        content: <MethodForm />,
         // content: MethodForm(),
         icon: <SolutionOutlined />,
     },

@@ -32,7 +32,7 @@ const onFinish = (values) => {
     console.log('Received values of form: ', values);
 };
 
-export default function IngForm(props) {
+export default function MethodForm(props) {
     const [inputs, setInputs] = useState({});
 
     const handleChange = (changedValues) => {
@@ -45,7 +45,7 @@ export default function IngForm(props) {
 
     return (
         <Form
-            name="ingForm"
+            name="methodForm"
             {...formItemLayout}
             onFinish={onFinish}
             onValuesChange={handleChange}
@@ -60,39 +60,18 @@ export default function IngForm(props) {
                                 </Form.Item>
                                 <Form.Item
                                     {...field}
-                                    label="Ingredient"
-                                    name={[field.name, 'ing']}
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Missing ingredient name',
-                                        },
-                                    ]}
+                                    label="Method"
+                                    name={[field.name, 'method']}
                                 >
-                                    <AutoComplete
-                                        style={{ width: 130 }}
-                                        options={ingredients}
-                                        placeholder="Type ingredient"
-                                        filterOption={(inputValue, option) =>
-                                            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-                                        }
-                                    />
-                                    {/* <Select
-                                        style={{
-                                            width: 130,
-                                        }}
-                                    >
-                                        {ingredients.map((el, i) => <Option value={el} key={el}>{el}</Option>)}
-                                    </Select> */}
                                 </Form.Item>
                                 <Form.Item
                                     {...field}
-                                    label="Amount"
-                                    name={[field.name, 'amount']}
+                                    label="Step"
+                                    name={[field.name, 'step']}
                                     rules={[
                                         {
                                             required: true,
-                                            message: 'Missing amount',
+                                            message: 'Explain step',
                                         },
                                     ]}
                                 >
