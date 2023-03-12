@@ -4,6 +4,12 @@ import AppLogo from './Logo';
 
 import { Avatar, Card, IconButton } from 'react-native-paper';
 import Sidebar from './Sidebar';
+import './Layout.css'
+import {
+  CoffeeOutlined,
+
+} from '@ant-design/icons';
+
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -37,34 +43,53 @@ const footerStyle = {
 
 
 const BaseLayout = (props) => (
-  <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
-    <Layout hasSider>
-      <Sidebar/>
-      <Layout
-        className="site-layout"
-        style={{
-          marginLeft: 200,
-        }}
-      >
-        <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%'}}>
-        <div
+
+  <div style={{height:"100%"}}>
+    <Layout hasSider style={{height:"100%"}}>
+        <Sidebar/>
+        <Layout
+          className="site-layout"
+          style={{
+            marginLeft: 200,
+          }}
+        >
+        <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%',display:"flex"}}>
+          <div className='header-box'>
+            <div className='header-holder'></div>
+            <div className='header-brand'>
+              <span style={{
+                color:"white",
+                fontFamily: "sans-serif",
+                fontSize:"xx-large",
+                }} >
+                Recipe
+              </span>
+              <div className='header-icon-box'>
+                <CoffeeOutlined className='header-icon'/>
+              </div>
+            </div>
+          </div>
+
+        {/* <div
           style={{
             float: 'right',
             width: 150,
             height: 36,
-            margin: '16px 24px 16px 0',
+            margin: '16px 24px 16px 0',<Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%',display:"flex"}}>
+        
             background: 'rgba(255, 255, 255, 0.2)',
           }}
         >
-          <Card.Title
-    title="Recipease"
-    titleStyle={{}}
-    right={(props) => <Avatar.Icon {...props} icon="folder" />}
-    rightStyle={{}}
-  />
-          {/* <Avatar.Icon size={24} icon="folder" /> */}
-          {/* <AppLogo color='white'/> */}
-        </div>
+            <Card.Title
+              title="Recipease"
+              titleStyle={{}}
+              right={(props) => <Avatar.Icon {...props} icon="folder" />}
+              rightStyle={{}}
+            /> */}
+            {/* <Avatar.Icon size={24} icon="folder" /> */}
+            {/* <AppLogo color='white'/> */}
+        {/* </div> */}
+
         {/* <Menu
           theme="dark"
           mode="horizontal"
@@ -75,13 +100,17 @@ const BaseLayout = (props) => (
           }))}
         /> */}
         </Header>
-        <Content className="site-layout" style={{ padding: '0 50px', overflow: "initial" }}>
-        <div style={{ padding: 24, minHeight: 500}}>{props.children}</div>
+
+
+        
+        <Content className="content-container" >
+        <div className='content-innerbox'>{props.children}</div>
       </Content>
-      <Footer style={footerStyle}>Footer</Footer>
+      {/* <Footer style={footerStyle}>Footer</Footer> */}
       </Layout>
     </Layout>
-  </Space>
+  </div>
+
 );
 
 export default BaseLayout;
