@@ -15,9 +15,11 @@ const RecipePage = (props) => (
                 <span className="dish-info1">Date: </span>
                 <span className="dish-info2">xx-xx-xx</span>
             </div>
+            
             <div style={{marginTop:'5px',display:'flex',justifyContent:'center',width:"80%"}}>
                 <div className='line'></div>
             </div>
+            
             <div className="recipe-box">
                 <span className="recipe-title">Materials</span>
                 <span className="recipe-content">Pasta (US: /ˈpɑːstə/, UK: /ˈpæstə/; Italian pronunciation: [ˈpasta]) is a type of food typically made from an unleavened dough of wheat flour mixed with water or eggs, and formed into sheets or other shapes, then cooked by boiling or baking. Rice flour, or legumes such as beans or lentils, are sometimes used in place of wheat flour to yield a different taste and texture, or as a gluten-free alternative. Pasta is a staple food of Italian cuisine.[1][2] </span>
