@@ -14,3 +14,9 @@
     margin-top: 1%;
 
 }
+.float-btn{
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
