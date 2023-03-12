@@ -1,4 +1,4 @@
-.cards-main{
+.frd-main{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +7,7 @@
     /* background-color: rgb(23, 36, 80); */
 }
 
-.cards-box{
+.frd-box{
     display:flex;
     flex-flow: row wrap;
     max-width: 1000px;

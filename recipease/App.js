@@ -12,6 +12,7 @@ import HomePage from './src/pages/home';
 import { Component } from 'react';
 import RecipePage from './src/pages/recipe';
 import ProfilePage from './src/pages/profile';
+import FriendPage from './src/pages/friend';
 
 // export default function App() {
 //   return (
@@ -60,7 +61,8 @@ class App extends Component {
         <Route path='/add-recipe' element={RecipePage()} />
         <Route path='/browse-recipes' element={ProfilePage()} />
         <Route path='/add-ingredient' element={RecipePage()} />
-        <Route path='/browse-ingredients' element={RecipePage()} />
+        <Route path='/browse-ingredients' element={FriendPage()} />
+        
       </Routes>
     </BrowserRouter>
       

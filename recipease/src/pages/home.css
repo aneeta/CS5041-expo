@@ -1,7 +1,9 @@
 .home-container{
     width: 100%;
     height: 100%;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .user-log{
     width: 100%;
@@ -37,7 +39,9 @@
 .recipe-box{
     width: 100%;
     height: auto;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 

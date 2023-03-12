@@ -18,12 +18,22 @@ const RecipePage = (props) => (
             <div style={{marginTop:'5px',display:'flex',justifyContent:'center',width:"80%"}}>
                 <div className='line'></div>
             </div>
-            <div className="material-box">
-                <span className="materials-title">Materials</span>
-                <span className="materials-content">Pasta (US: /ˈpɑːstə/, UK: /ˈpæstə/; Italian pronunciation: [ˈpasta]) is a type of food typically made from an unleavened dough of wheat flour mixed with water or eggs, and formed into sheets or other shapes, then cooked by boiling or baking. Rice flour, or legumes such as beans or lentils, are sometimes used in place of wheat flour to yield a different taste and texture, or as a gluten-free alternative. Pasta is a staple food of Italian cuisine.[1][2] </span>
+            <div className="recipe-box">
+                <span className="recipe-title">Materials</span>
+                <span className="recipe-content">Pasta (US: /ˈpɑːstə/, UK: /ˈpæstə/; Italian pronunciation: [ˈpasta]) is a type of food typically made from an unleavened dough of wheat flour mixed with water or eggs, and formed into sheets or other shapes, then cooked by boiling or baking. Rice flour, or legumes such as beans or lentils, are sometimes used in place of wheat flour to yield a different taste and texture, or as a gluten-free alternative. Pasta is a staple food of Italian cuisine.[1][2] </span>
             </div>
 
-            <div className="step-box"></div>
+            <div className="recipe-box">
+                <span className="recipe-title">Steps</span>
+                <span className="recipe-content">    
+                1.Fill a large saucepan with water, put the lid on and bring to the boil over a high heat.<br />
+                2.Add a good pinch of sea salt.<br />
+                3.Once the water is boiling, stir in the pasta.<br />
+                4.Cook the pasta according to the packet instructions. ...<br />
+                5.Scoop out a mugful of the starchy cooking water and set aside.<br />
+                </span>
+                
+            </div>
 
         </div>
     </BaseLayout>
