@@ -45,16 +45,22 @@ import BrowseIngPage from './src/pages/browseIngredients';
 
 export default function App() {
 
-  const [sessionData, setSessionData] = useState({})
+  const [user, authLoading, authError] = useAuthState(auth);
 
-  // const [user, authLoading, authError] = useAuthState(auth);
+  const [snapshots, dbLoading, dbError] = useList(user ? ref(db, `/public/${user.uid}`) : null);
 
-  // setSessionData((prev) => ({ ...{ user: user }, ...prev }))
+  const [sessionData, setSessionData] = useState({
+    user: user,
+    authLoading: authLoading,
+    authError: authError,
+    // snapshots: snapshots,
+    // dbLoading: dbLoading,
+    // dbError: dbError
+  })
 
-  // useEffect(() => {
-  //   console.log("in use effect")
-  //   signInAnonymously(auth);
-  // }, []);
+  useEffect(() => {
+    signInAnonymously(auth);
+  }, []);
 
   return (
     <Context.Provider value={{ sessionData, setSessionData }}>

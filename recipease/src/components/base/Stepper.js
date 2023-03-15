@@ -34,6 +34,8 @@ function CustomStepper(props) {
             content: JSON.stringify(props.data)
         })
 
+        console.log(JSON.stringify(props.data).length)
+
         // const [snapshots, dbLoading, dbError] = useList(user ? ref(db, '/public') : null);
 
         console.log(reference)
