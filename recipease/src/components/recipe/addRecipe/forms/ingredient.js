@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
-import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
+import { useContext, useEffect, useState } from 'react';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Select, Space, AutoComplete } from 'antd';
+import { RecipeCtx } from '../../../../../Context';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 // placeholder data
 const ingredients = [{ value: "Carrot" }, { value: "Butter" }, { value: "Flour" }]
@@ -11,7 +12,7 @@ const { Option } = Select;
 
 const formItemLayout = {
     labelCol: {
-        span: 8,
+        span: 10,
     },
     wrapperCol: {
         span: 14,
@@ -20,38 +21,32 @@ const formItemLayout = {
     padding: 10
 };
 
-const normFile = (e) => {
-    console.log('Upload event:', e);
-    if (Array.isArray(e)) {
-        return e;
-    }
-    return e?.fileList;
-};
 
-const onFinish = (values) => {
-    console.log('Received values of form: ', values);
-};
-
-export default function IngForm(props) {
-    const [inputs, setInputs] = useState({});
+export default function IngForm() {
+    const { inputs, setInputs } = useContext(RecipeCtx);
 
     const handleChange = (changedValues) => {
-        setInputs((prev) => ({ ...prev, ...changedValues }));
+
+        const current = form.getFieldValue();
+        setInputs((prev) => ({ ...prev, ...current }));
+
     }
 
     useEffect(() => {
         console.log(inputs)
     }, [inputs])
 
+    const [form] = Form.useForm();
+
     return (
         <Form
             name="ingForm"
             {...formItemLayout}
-            onFinish={onFinish}
+            form={form}
             onValuesChange={handleChange}
             style={{ maxWidth: 700, margin: 20, alignItems: 'center' }}>
 
-            <Form.List name="Ingredient">
+            <Form.List name="ingData">
                 {(fields, { add, remove }) => (
                     <>
                         {fields.map((field) => (
@@ -61,7 +56,7 @@ export default function IngForm(props) {
                                 <Form.Item
                                     {...field}
                                     label="Ingredient"
-                                    name={[field.name, 'ing']}
+                                    name={[field.key, 'ing']}
                                     rules={[
                                         {
                                             required: true,
@@ -88,7 +83,7 @@ export default function IngForm(props) {
                                 <Form.Item
                                     {...field}
                                     label="Amount"
-                                    name={[field.name, 'amount']}
+                                    name={[field.key, 'amount']}
                                     rules={[
                                         {
                                             required: true,

@@ -1,20 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
-import {
-    Input,
-    Button,
-    Checkbox,
-    Col,
-    Form,
-    InputNumber,
-    Radio,
-    Rate,
-    Row,
-    Select,
-    Slider,
-    Switch,
-    Upload,
-} from 'antd';
+import { Input, Form, Select, Upload } from 'antd';
+import { RecipeCtx } from '../../../../../Context';
+
 
 // placeholder data
 const cuisines = ["Thai", "Indian", "French", "American", "Chinese", "Turkish", "Mexican"]
@@ -42,30 +30,26 @@ const normFile = (e) => {
     return e?.fileList;
 };
 
-const onFinish = (values) => {
-    console.log('Received values of form: ', values);
-};
 
-export default function InfoForm(props) {
-    const [inputs, setInputs] = useState({});
+export default function InfoForm() {
+    const { inputs, setInputs } = useContext(RecipeCtx);
+
+    // const [form] = Form.useForm();
 
     const handleChange = (changedValues) => {
-
-        // const key = Object.keys(changedValues)
-        // const val = Object.values(changedValues)
-        setInputs((prev) => ({ ...prev, ...changedValues }));
-        // props.onInputChange(state);
+        setInputs((prev) => ({ infoForm: { ...prev.infoForm, ...changedValues } }));
     }
 
     useEffect(() => {
-        console.log(inputs)
+        // changeFunc(inputs)
     }, [inputs])
+
 
     return (
         <Form
             name="infoForm"
+            // form={form}
             {...formItemLayout}
-            onFinish={onFinish}
             onValuesChange={handleChange}
             style={{ maxWidth: 700, margin: 20, alignItems: 'center' }}>
 
@@ -79,7 +63,7 @@ export default function InfoForm(props) {
                         message: 'Please choose recipe name!',
                     },
                 ]}>
-                <Input />
+                <Input defaultValue={inputs.infoForm?.name} />
             </Form.Item>
 
             <Form.Item
@@ -93,7 +77,7 @@ export default function InfoForm(props) {
                     },
                 ]}
             >
-                <Select>
+                <Select defaultValue={inputs.infoForm?.meal}>
                     {meals.map((el, i) => <Option value={el} key={el}>{el}</Option>)}
                 </Select>
             </Form.Item>
@@ -109,7 +93,7 @@ export default function InfoForm(props) {
                     },
                 ]}
             >
-                <Select mode="multiple">
+                <Select mode="multiple" defaultValue={inputs.infoForm?.cuisines}>
                     {cuisines.map((el, i) => <Option value={el} key={el}>{el}</Option>)}
                 </Select>
             </Form.Item>
@@ -125,7 +109,7 @@ export default function InfoForm(props) {
                     },
                 ]}
             >
-                <Select mode="multiple">
+                <Select mode="multiple" defaultValue={inputs.infoForm?.occasions}>
                     {occasion.map((el, i) => <Option value={el} key={el}>{el}</Option>)}
                 </Select>
             </Form.Item>

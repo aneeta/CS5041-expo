@@ -1,74 +1,58 @@
+import { useEffect, useState } from 'react';
 import { Button, message, Steps, theme } from 'antd';
 import { LoadingOutlined, SmileOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons';
-import { useState } from 'react';
 
 import InfoForm from './forms/info';
-import IngredientForm from './old_forms/ingredient';
 import MethodForm from './forms/method';
+import FormSummary from './forms/summary';
+
 import CustomStepper from '../../base/Stepper';
 import IngForm from './forms/ingredient';
+import { RecipeCtx } from '../../../../Context';
 
-const steps = [
-    {
-        title: 'Info',
-        content: <InfoForm />,
-        // icon: <SolutionOutlined />,
-    },
-    {
-        title: 'Ingredients',
-        content: <IngForm />,
-        // icon: <SolutionOutlined />,
-    },
-    {
-        title: 'Method',
-        content: <MethodForm />,
-        // content: MethodForm(),
-        icon: <SolutionOutlined />,
-    },
-    {
-        title: 'Done',
-        content: 'TODO done form',
-        // icon: <SmileOutlined />,
-    },
-];
 
 const RecipeSteps = () => {
+
+    const steps = [
+        {
+            title: 'Info',
+            content: <InfoForm />
+            // content: <InfoForm onChange={handleChange} />,
+            // icon: <SolutionOutlined />,
+        },
+        {
+            title: 'Ingredients',
+            content: <IngForm />
+            // content: <IngForm onChange={handleChange} />,
+            // icon: <SolutionOutlined />,
+        },
+        {
+            title: 'Method',
+            content: <MethodForm />
+            // content: <MethodForm onChange={handleChange} />,
+            // content: MethodForm(),
+            // icon: <SolutionOutlined />,
+        },
+        {
+            title: 'Done',
+            content: <FormSummary />
+            // icon: <SmileOutlined />,
+        },
+    ];
+
+    const [inputs, setInputs] = useState({})
+
+    useEffect(() => {
+        console.log("form", inputs)
+    }, [inputs])
+
+
     return (
-        <CustomStepper steps={steps} />
+        <RecipeCtx.Provider value={{ inputs, setInputs }}>
+            <CustomStepper steps={steps} data={inputs} formName={"Recipe"} clearFunc={setInputs} />
+        </RecipeCtx.Provider>
+
     );
 };
 
 export default RecipeSteps;
-
-
-
-// import { Steps } from 'antd';
-
-// const Stepper = (props) => (
-//   <Steps
-//     items={[
-//       {
-//         title: 'Info',
-//         status: props.status,
-//         icon: <UserOutlined />,
-//       },
-//       {
-//         title: 'Ingredients',
-//         status: 'props.status,
-//         icon: <SolutionOutlined />,
-//       },
-//       {
-//         title: 'Method',
-//         status: props.status,
-//         icon: <LoadingOutlined />,
-//       },
-//       {
-//         title: 'Done',
-//         status: props.status,
-//         icon: <SmileOutlined />,
-//       },
-//     ]}
-//   />
-// );
-
-// export default Stepper;

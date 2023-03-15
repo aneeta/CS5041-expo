@@ -1,17 +1,15 @@
-import { useEffect, useState } from 'react';
-import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
+import { useContext, useEffect, useState } from 'react';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Select, Space, AutoComplete } from 'antd';
+import { RecipeCtx } from '../../../../../Context';
 
 // placeholder data
-const ingredients = [{ value: "Carrot" }, { value: "Butter" }, { value: "Flour" }]
-const units = ["g", "tsp", "tbsp", "cup"]
 
 const { Option } = Select;
 
 const formItemLayout = {
     labelCol: {
-        span: 8,
+        span: 6,
     },
     wrapperCol: {
         span: 14,
@@ -20,49 +18,36 @@ const formItemLayout = {
     padding: 10
 };
 
-const normFile = (e) => {
-    console.log('Upload event:', e);
-    if (Array.isArray(e)) {
-        return e;
-    }
-    return e?.fileList;
-};
 
-const onFinish = (values) => {
-    console.log('Received values of form: ', values);
-};
 
-export default function MethodForm(props) {
-    const [inputs, setInputs] = useState({});
+export default function MethodForm() {
+    const { inputs, setInputs } = useContext(RecipeCtx);
 
     const handleChange = (changedValues) => {
-        setInputs((prev) => ({ ...prev, ...changedValues }));
+        const current = form.getFieldValue();
+        setInputs((prev) => ({ ...prev, ...current }));
     }
 
     useEffect(() => {
         console.log(inputs)
     }, [inputs])
 
+    const [form] = Form.useForm();
+
     return (
         <Form
             name="methodForm"
             {...formItemLayout}
-            onFinish={onFinish}
+            form={form}
             onValuesChange={handleChange}
             style={{ maxWidth: 700, margin: 20, alignItems: 'center' }}>
 
-            <Form.List name="Ingredient">
+            <Form.List name="method">
                 {(fields, { add, remove }) => (
                     <>
                         {fields.map((field) => (
                             <Space key={field.key} align="baseline">
-                                <Form.Item >
-                                </Form.Item>
-                                <Form.Item
-                                    {...field}
-                                    label="Method"
-                                    name={[field.name, 'method']}
-                                >
+                                <Form.Item>
                                 </Form.Item>
                                 <Form.Item
                                     {...field}
@@ -77,13 +62,13 @@ export default function MethodForm(props) {
                                 >
                                     <Input />
                                 </Form.Item>
-                                <MinusCircleOutlined onClick={() => remove(field.name)} />
+                                {/* <MinusCircleOutlined onClick={() => remove(field.name)} /> */}
                             </Space>
                         ))}
 
                         <Form.Item>
                             <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
-                                Add ingredients
+                                Add step
                             </Button>
                         </Form.Item>
                     </>

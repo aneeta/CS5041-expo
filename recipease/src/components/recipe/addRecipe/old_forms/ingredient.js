@@ -7,9 +7,9 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
 export default function IngredientForm(props) {
-    return (
-        <>
-        <Typography variant="h6" gutterBottom>
+  return (
+    <>
+      <Typography variant="h6" gutterBottom>
         Ingredients
       </Typography>
       <Grid container spacing={3}>
@@ -52,6 +52,6 @@ export default function IngredientForm(props) {
           />
         </Grid>
       </Grid>
-        </>
-    )
+    </>
+  )
 }
