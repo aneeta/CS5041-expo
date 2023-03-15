@@ -1,7 +1,10 @@
+import { ref, push, child, serverTimestamp } from 'firebase/database'
 import { Button, message, Steps, theme } from 'antd';
-import { useState } from 'react';
-
-
+import { useState, useEffect } from 'react';
+import { db, auth } from '../../../db';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signInAnonymously } from "firebase/auth";
+import { useList } from 'react-firebase-hooks/database';
 
 
 function CustomStepper(props) {
@@ -15,8 +18,35 @@ function CustomStepper(props) {
         border: `1px dashed ${token.colorBorder}`,
         marginTop: 16,
     };
+    const [user, authLoading, authError] = useAuthState(auth);
+
+    useEffect(() => {
+        signInAnonymously(auth);
+    }, []);
+
+    const submitData = () => {
+
+        push(child(user ? ref(db) : null, `/public/${user.uid}`), {
+            type: "data",
+            created: serverTimestamp(),
+            modified: serverTimestamp(),
+            message: "",
+            content: props.data
+        })
+
+        const [snapshots, dbLoading, dbError] = useList(user ? ref(database, '/public') : null);
+
+        console.log(snapshots)
+
+        message.success('Added!')
+
+        props.clearFunc({})
+
+        // TODO, go to home page??
+    }
 
     const [current, setCurrent] = useState(0);
+
     const next = () => {
         setCurrent(current + 1);
     };
@@ -54,7 +84,7 @@ function CustomStepper(props) {
                     </Button>
                 )}
                 {current === props.steps.length - 1 && (
-                    <Button type="primary" onClick={() => message.success('Processing complete!')}>
+                    <Button type="primary" onClick={() => submitData()}>
                         Done
                     </Button>
                 )}
