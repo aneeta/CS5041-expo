@@ -1,21 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
-import {
-    Input,
-    Button,
-    Checkbox,
-    Col,
-    Form,
-    InputNumber,
-    Radio,
-    Rate,
-    Row,
-    Select,
-    Slider,
-    Switch,
-    Upload,
-} from 'antd';
-
+import { Input, Form, Select } from 'antd';
 import { IngCtx } from '../../../../../Context';
 
 
@@ -42,7 +26,6 @@ const ingTypes = [
         ]
     }
 ]
-const { Option } = Select;
 
 const formItemLayout = {
     labelCol: {
@@ -58,8 +41,6 @@ const formItemLayout = {
 
 export default function InfoForm(props) {
     const { inputs, setInputs } = useContext(IngCtx);
-
-    // const [inputs, setInputs] = useState(props.inputs);
 
     const handleChange = (changedValues) => {
         setInputs((prev) => ({ ...prev, ...changedValues }));
