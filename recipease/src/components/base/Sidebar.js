@@ -80,6 +80,9 @@ const Sidebar = (props) => (
       <Menu.Item key='recipe-pag-nav' icon={<DesktopOutlined />}>
         <Link to={'/recipe'}>Recipe Page</Link>
       </Menu.Item>
+      <Menu.Item key='db-pag-nav' icon={<DesktopOutlined />}>
+        <Link to={'/dbtest'}>DB Test Page</Link>
+      </Menu.Item>
     </Menu>
   </Sider>
 )

@@ -39,16 +39,19 @@ export default function FormSummary(props) {
                     ([k, v], i) => <Descriptions.Item label={v.toUpperCase()} key={i}>{v.amount.toString()}</Descriptions.Item>)} */}
             </Descriptions>
             <Descriptions title="Method">
-                <List
-                    dataSource={inputs.method}
-                    renderItem={
-                        (item) => (
-                            <List.Item>
-                                {item.step}
-                            </List.Item>
-                        )
-                    }
-                />
+                <Descriptions.Item>
+                    <List
+                        dataSource={inputs.method}
+                        renderItem={
+                            (item) => (
+                                <List.Item key={item.step}>
+                                    {item.step}
+                                </List.Item>
+                            )
+                        }
+                    />
+                </Descriptions.Item>
+
                 {/* {Object.entries(inputs.method).map(
                     ([k, v], i) => <Descriptions.Item label={k.toUpperCase()} key={i}>{v.step.toString()}</Descriptions.Item>)} */}
             </Descriptions>

@@ -1,7 +1,7 @@
 import { ref, push, child, serverTimestamp } from 'firebase/database'
 import { Button, message, Steps, theme } from 'antd';
 import { useState, useEffect } from 'react';
-import { db, auth } from '../../../db';
+import { db, auth, dbSubspace } from '../../../db';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signInAnonymously } from "firebase/auth";
 import { useList } from 'react-firebase-hooks/database';
@@ -26,23 +26,23 @@ function CustomStepper(props) {
 
     const submitData = () => {
 
-        push(child(user ? ref(db) : null, `/public/${user.uid}`), {
-            type: "data",
+        const reference = push(child(user ? ref(db) : null, `/public/${user.uid}`), {
             created: serverTimestamp(),
             modified: serverTimestamp(),
-            message: "",
-            content: props.data
+            type: "data",
+            message: `${props.formName}`,
+            content: JSON.stringify(props.data)
         })
 
-        const [snapshots, dbLoading, dbError] = useList(user ? ref(database, '/public') : null);
+        // const [snapshots, dbLoading, dbError] = useList(user ? ref(db, '/public') : null);
 
-        console.log(snapshots)
+        console.log(reference)
 
-        message.success('Added!')
+        // message.success('Added!')
 
+        // reset form
         props.clearFunc({})
-
-        // TODO, go to home page??
+        setCurrent(0);
     }
 
     const [current, setCurrent] = useState(0);

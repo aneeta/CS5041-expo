@@ -22,14 +22,6 @@ const formItemLayout = {
     padding: 10
 };
 
-const normFile = (e) => {
-    console.log('Upload event:', e);
-    if (Array.isArray(e)) {
-        return e;
-    }
-    return e?.fileList;
-};
-
 
 export default function InfoForm() {
     const { inputs, setInputs } = useContext(RecipeCtx);
@@ -115,7 +107,7 @@ export default function InfoForm() {
             </Form.Item>
 
             <Form.Item label="Cover Image" name="cover">
-                <Form.Item valuePropName="fileList" getValueFromEvent={normFile} noStyle>
+                <Form.Item noStyle>
                     <Upload.Dragger maxCount="1" accept="image" name="files" action="/upload.do">
                         <p className="ant-upload-drag-icon">
                             <InboxOutlined />
