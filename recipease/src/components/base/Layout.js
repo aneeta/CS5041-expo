@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Space, Menu,  Breadcrumb } from 'antd';
+import { Layout, Space, Menu, Breadcrumb } from 'antd';
 import AppLogo from './Logo';
 
 import { Avatar, Card, IconButton } from 'react-native-paper';
@@ -42,35 +42,36 @@ const footerStyle = {
 
 
 
-const BaseLayout = (props) => (
+const BaseLayout = (props) => {
 
-  <div style={{height:"100%"}}>
-    <Layout hasSider style={{height:"100%"}}>
-        <Sidebar/>
+  return (
+    <div style={{ height: "100%" }}>
+      <Layout hasSider style={{ height: "100%" }}>
+        <Sidebar />
         <Layout
           className="site-layout"
           style={{
             marginLeft: 200,
           }}
         >
-        <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%',display:"flex"}}>
-          <div className='header-box'>
-            <div className='header-holder'></div>
-            <div className='header-brand'>
-              <span style={{
-                color:"white",
-                fontFamily: "sans-serif",
-                fontSize:"xx-large",
+          <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%', display: "flex" }}>
+            <div className='header-box'>
+              <div className='header-holder'></div>
+              <div className='header-brand'>
+                <span style={{
+                  color: "white",
+                  fontFamily: "sans-serif",
+                  fontSize: "xx-large",
                 }} >
-                Recipe
-              </span>
-              <div className='header-icon-box'>
-                <CoffeeOutlined className='header-icon'/>
+                  Recipe
+                </span>
+                <div className='header-icon-box'>
+                  <CoffeeOutlined className='header-icon' />
+                </div>
               </div>
             </div>
-          </div>
 
-        {/* <div
+            {/* <div
           style={{
             float: 'right',
             width: 150,
@@ -88,9 +89,9 @@ const BaseLayout = (props) => (
             /> */}
             {/* <Avatar.Icon size={24} icon="folder" /> */}
             {/* <AppLogo color='white'/> */}
-        {/* </div> */}
+            {/* </div> */}
 
-        {/* <Menu
+            {/* <Menu
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['2']}
@@ -99,18 +100,19 @@ const BaseLayout = (props) => (
             label: `nav ${index + 1}`,
           }))}
         /> */}
-        </Header>
+          </Header>
 
 
-        
-        <Content className="content-container" >
-        <div className='content-innerbox'>{props.children}</div>
-      </Content>
-      {/* <Footer style={footerStyle}>Footer</Footer> */}
+
+          <Content className="content-container" >
+            <div className='content-innerbox' style={{ padding: 25 }}>{props.children}</div>
+          </Content>
+          {/* <Footer style={footerStyle}>Footer</Footer> */}
+        </Layout>
       </Layout>
-    </Layout>
-  </div>
+    </div>
 
-);
+  )
+};
 
 export default BaseLayout;
