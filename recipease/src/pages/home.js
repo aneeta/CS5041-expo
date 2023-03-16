@@ -5,7 +5,7 @@ import {
   UserOutlined,
   CoffeeOutlined,
 } from '@ant-design/icons';
-import { Input, Spin } from 'antd';
+import { Input, Spin, Radio } from 'antd';
 
 import { Avatar, Button, Card, Text } from 'react-native-paper';
 
@@ -30,14 +30,31 @@ function getData(snapshotVal) {
 const HomePage = (props) => {
   const { sessionData, setSessionData } = useContext(Context);
 
+  const [filtered, setFiltered] = useState([]);
+  const [recipes, setRecipes] = useState([]);
+  const [filterIng, setFilterIng] = useState(false);
+
+  const filter = () => {
+    setFilterIng(!filterIng)
+    setRecipes(
+      filterIng ? filtered.filter((el) => el.ingData.map((el, _) => el.ing.toLowerCase()).every(val => sessionData.availableIng().includes(val))) : filtered
+    )
+  }
+
+  // useEffect(() => {
+  //   const fil = sessionData.allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content))
+  //   setFiltered(fil)
+  // }, [sessionData]);
+
   // const [snapshots, dbLoading, dbError] = useList(sessionData.user ? ref(sessionData.db, `/public/${sessionData.user.uid}`) : null);
 
-  const [user, authLoading, authError] = useAuthState(auth);
-  const [snapshots, dbLoading, dbError] = useListVals(user ? ref(db, `/public/${user.uid}`) : null);
-  console.log(snapshots)
-  let parsedArr;
+  // const [user, authLoading, authError] = useAuthState(auth);
+  // const [snapshots, dbLoading, dbError] = useListVals(user ? ref(db, `/public/${user.uid}`) : null);
+  // console.log(snapshots)
+  // const allRecipes = 
+  // console.log("sessionData", sessionData)
   return (
-    <BaseLayout >
+    <BaseLayout>
       <div className="home-container">
         <div className="user-log">
           <UserOutlined className="avatar-style" />
@@ -61,23 +78,29 @@ const HomePage = (props) => {
         </div>
 
         <div className="recipe-box">
-          {authLoading || dbLoading || !snapshots ?
+          {sessionData.authLoading || sessionData.allDbLoading || !sessionData.allSnapshots ?
             <>
               < Spin />
             </>
 
             :
-            snapshots.filter(el => ((el.type === "data") && (el.message === "Recipe"))).map((el, i) => JSON.parse(el.content)).map((el, i) => (
 
-              <Card>
-                <Card.Title
-                  title={el.infoForm.name} // Recipe name
-                // user.uid // user string
-                // also put some default placeholder image if one is missing
-                />
-                {/* <Card.Cover source={{ uri: el.content.infoForm.cover }} /> */}
-              </Card>
-            ))
+            <>
+              <Button onClick={filter} type="primary">{!filterIng ? "Show What I Can Make" : "Show All Recipes"}</Button>
+
+              {sessionData.allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
+                <Card key={i}>
+                  <Card.Title
+                    title={el.infoForm.name} // Recipe name
+                  // user.uid // user string
+                  // also put some default placeholder image if one is missing
+                  />
+                  {/* <Card.Cover source={{ uri: el.content.infoForm.cover }} /> */}
+                </Card>
+              )}
+            </>
+
+
           }
 
           {/* <CardBox></CardBox> */}

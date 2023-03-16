@@ -1,4 +1,4 @@
-import { Form, List, Spin } from "antd";
+import { Form, List, Spin, Checkbox } from "antd";
 import { Context } from "../../Context";
 import BaseLayout from "../components/base/Layout";
 import IngSteps from "../components/ingredient/addIngredient/ingredientSteps";
@@ -10,69 +10,96 @@ import { ref, push, child, serverTimestamp } from 'firebase/database'
 import { db, auth } from "../../db";
 import { useContext, useState, useEffect } from 'react';
 
+import ING_TYPES from '../components/ingredient/ingList'
 
 const BrowseIngPage = (props) => {
+
     const { sessionData, setSessionData } = useContext(Context);
+
+    // const [myIngs, setMyIngs] = useState([]);
+
+    // const onChange = (values) => {
+    //     setMyIngs(values)
+    //     setSessionData((prev) => ({ ...prev, ...{ userIng: myIngs } }))
+    // }
 
     const form = Form.useForm();
 
-    const [user, authLoading, authError] = useAuthState(auth);
-    signInAnonymously(auth);
+    // const [user, authLoading, authError] = useAuthState(auth);
+    // signInAnonymously(auth);
 
-    // useEffect(() => {
-    //     signInAnonymously(auth);
-    // }, []);
+    // // useEffect(() => {
+    // //     signInAnonymously(auth);
+    // // }, []);
 
-    console.log(user)
+    // console.log(user)
 
-    const [snapshots, dbLoading, dbError] = useListVals(user ? ref(db, `/public/${user.uid}`) : null);
+    // const [snapshots, dbLoading, dbError] = useListVals(user ? ref(db, `/public/${user.uid}`) : null);
 
-    console.log(snapshots)
+    // console.log(snapshots)
 
     // const data = snapshots.map((el, _) => el.val());
     // const out = data.filter(el => ((el.type === "recipeaseData") && (el.message("Ingredients"))))
     // const data = Object.fromEntries(Object.entries(snapshots.flatMap(el => el.val())).filter(([]) => key.includes('Name')))
     // Object.filter()
 
-    const onChange = (value) => {
-        // setSessionData((prev) => ({...prev, {availableIng: }}))
-    }
+    // const onChange = (value) => {
+    //     // setSessionData((prev) => ({...prev, {availableIng: }}))
+    // }
 
 
     return (
         <BaseLayout>
-            {
-                authLoading || dbLoading || !snapshots ?
-                    <>
-                        < Spin />
-                    </>
+            <List>
+                {ING_TYPES.flatMap((el) => <List.Item>{el.toString()}</List.Item>)}
+            </List>
 
-                    :
-                    // <Form
-                    //     labelCol={{ span: 4 }}
-                    //     wrapperCol={{ span: 14 }}
-                    //     layout="horizontal"
-                    //     initialValues={sessionData.userIng}
-                    //     onValuesChange={onChange}
-                    //     form={form}
-                    // >
-                    <List
-                        // dataSource={snapshots.map((el, _) => el.val()).filter(el => ((el.type === "recipeaseData") && (el.message("Ingredients"))))}
-                        dataSource={snapshots.filter(el => ((el.type === "data") && (el.message === "Ingredients"))).map((el, i) => JSON.parse(el.content))}
-                        renderItem={
-                            // (item) => (<List.Item>{item.name}</List.Item>)
+            {/* <Form
+                labelCol={{ span: 4 }}
+                wrapperCol={{ span: 14 }}
+                layout="horizontal"
+                // initialValues={sessionData.userIng}
+                // onValuesChange={onChange}
+                form={form}
+            >
+                {ING_TYPES.flatMap((el) =>
+                    <Form.Item>{console.log(el)}</Form.Item>
+                    // <Form.Item name={el.label.toLowerCase()} label={el.label}>
+                    // {/* <Checkbox.Group>
+                    //     {el.options.flatMap((it) => (
+                    //         <Checkbox value={it.value}>{it.label}</Checkbox>
+                    //     ))}
+                    // </Checkbox.Group> */
+                // </Form.Item>) )} </Form > 
+            }
 
-                            (item) => (<List.Item>{`(${item.type.toUpperCase()}) ${item.name}`}</List.Item>)
+            {// console.log(ING_TYPES)
+                // sessionData.authLoading || sessionData.allDbLoading || !sessionData.allSnapshots ?
+                //     <>
+                //         < Spin />
+                //     </>
 
-                        }
-                    />
+                //     :
 
-                // </Form>
+
+                // console.log(ING_TYPES)
+
+
+                //             <List
+                //         // dataSource={snapshots.map((el, _) => el.val()).filter(el => ((el.type === "recipeaseData") && (el.message("Ingredients"))))}
+                //         dataSource={snapshots.filter(el => ((el.type === "data") && (el.message === "Ingredients"))).map((el, i) => JSON.parse(el.content))}
+                //         renderItem={
+                //         // (item) => (<List.Item>{item.name}</List.Item>)
+                //         (item) => (<List.Item>{`(${item.type.toUpperCase()}) ${item.name}`}</List.Item>)
+                //         }
+                //     />
+
+                // // </Form>
 
             }
 
 
-        </BaseLayout>
+        </BaseLayout >
     )
 }
 

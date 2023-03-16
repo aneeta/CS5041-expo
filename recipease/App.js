@@ -18,30 +18,6 @@ import { ref, push, child, serverTimestamp } from 'firebase/database'
 import { db, auth } from "./db";
 import BrowseIngPage from './src/pages/browseIngredients';
 
-// class App extends Component {
-
-//   render() {
-
-//     return (
-//       <Context.Provider value={{ sessionData, setSessionData }}>
-//         <BrowserRouter>
-//           <Routes>
-//             <Route path='/' element={HomePage()} />
-//             <Route path='/profile' element={ProfilePage()} />
-//             <Route path='/add-recipe' element={AddRecipePage()} />
-//             <Route path='/browse-recipes' element={AddRecipePage()} />
-//             <Route path='/add-ingredient' element={AddIngPage()} />
-//             <Route path='/browse-ingredients' element={AddIngPage()} />
-//             <Route path='/friends' element={FriendPage()} />
-//             <Route path='/recipe' element={RecipePage()} />
-//           </Routes>
-//         </BrowserRouter>
-//       </Context.Provider>
-//     )
-//   }
-// }
-
-// export default App;
 
 export default function App() {
 
@@ -49,18 +25,27 @@ export default function App() {
 
   const [snapshots, dbLoading, dbError] = useList(user ? ref(db, `/public/${user.uid}`) : null);
 
-  const [sessionData, setSessionData] = useState({
-    user: user,
-    authLoading: authLoading,
-    authError: authError,
-    // snapshots: snapshots,
-    // dbLoading: dbLoading,
-    // dbError: dbError
-  })
+  const [allSnapshots, allDbLoading, allDbError] = useList(user ? ref(db, `/public`) : null);
+
+  const [sessionData, setSessionData] = useState({})
 
   useEffect(() => {
     signInAnonymously(auth);
-  }, []);
+    setSessionData({
+      user: user,
+      authLoading: authLoading,
+      authError: authError,
+      // snapshots: snapshots,
+      // dbLoading: dbLoading,
+      // dbError: dbError,
+      allSnapshots: allSnapshots,
+      allDbLoading: allDbLoading,
+      allDbError: allDbError
+    })
+    // setSessionData((prev) => ({ ...prev, ...{ allRecipes: sessionData.allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))) } }))
+    // console.log("authenticated")
+    // console.log(user)
+  }, [user, authLoading, authError, allSnapshots, allDbLoading, allDbError]);
 
   // const sample = snapshots[0].val()
   // const parsed = snapshots.filter(el => ((el.type === "data") && (el.message === "Recipe"))).map((el, i) => JSON.parse(el.content))
@@ -70,32 +55,29 @@ export default function App() {
     <Context.Provider value={{ sessionData, setSessionData }}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={HomePage()} />
-          <Route path='/profile' element={ProfilePage()} />
-          <Route path='/add-recipe' element={AddRecipePage()} />
-          <Route path='/browse-recipes' element={AddRecipePage()} />
-          <Route path='/add-ingredient' element={AddIngPage()} />
-          <Route path='/browse-ingredients' element={BrowseIngPage()} />
-          <Route path='/friends' element={FriendPage()} />
+          <Route path='/' element={<HomePage />} />
+          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/add-recipe' element={<AddRecipePage />} />
+          <Route path='/browse-recipes' element={<AddRecipePage />} />
+          <Route path='/add-ingredient' element={<AddIngPage />} />
+          <Route path='/browse-ingredients' element={<BrowseIngPage />} />
+          <Route path='/friends' element={<FriendPage />} />
           {/* snapshots.filter(el => ((el.type === "data") && (el.message === "Ingredients"))).map((el, i) => JSON.parse(el.content)) */}
-          <Route path='/recipe' element={RecipePage(
-            // {
+          <Route path='/recipe' element={<RecipePage
+            name="Baked Apple"
+            author="User"
+            date="20-01-2023"
+            ingredients={[{ ing: "Apple", amount: 1 }]}
+            method={[{ step: "Bake" }]} />} />
+          {/* // {
             //   name: parsed[0].infoForm.name,
             //   author: user.uid,
             //   date: sample.created,
             //   ingredients: parsed[0].ingForm,
             //   method: parsed[0].method,
 
-            // }
-            {
-              name: "Baked Apple",
-              author: "User",
-              date: "20-01-2023",
-              ingredients: [{ ing: "Apple", amount: 1 }],
-              method: [{ step: "Bake" }],
-            }
-          )} />
-          <Route path='/dbtest' element={DbTest()} />
+            // } */}
+          <Route path='/dbtest' element={<DbTest />} />
         </Routes>
       </BrowserRouter>
     </Context.Provider>
