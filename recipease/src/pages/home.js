@@ -67,7 +67,7 @@ const HomePage = (props) => {
             </>
 
             :
-            snapshots.filter(el => ((el.type === "data"))).map((el, i) => JSON.parse(el.content)).map((el, i) => (
+            snapshots.filter(el => ((el.type === "data") && (el.message === "Recipe"))).map((el, i) => JSON.parse(el.content)).map((el, i) => (
 
               <Card>
                 <Card.Title

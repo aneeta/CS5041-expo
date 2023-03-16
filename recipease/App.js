@@ -13,7 +13,7 @@ import DbTest from './src/pages/dbTest';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signInAnonymously } from "firebase/auth";
-import { useList } from 'react-firebase-hooks/database';
+import { useList, useListVals } from 'react-firebase-hooks/database';
 import { ref, push, child, serverTimestamp } from 'firebase/database'
 import { db, auth } from "./db";
 import BrowseIngPage from './src/pages/browseIngredients';
@@ -62,6 +62,10 @@ export default function App() {
     signInAnonymously(auth);
   }, []);
 
+  // const sample = snapshots[0].val()
+  // const parsed = snapshots.filter(el => ((el.type === "data") && (el.message === "Recipe"))).map((el, i) => JSON.parse(el.content))
+  // console.log(parsed)
+
   return (
     <Context.Provider value={{ sessionData, setSessionData }}>
       <BrowserRouter>
@@ -71,9 +75,26 @@ export default function App() {
           <Route path='/add-recipe' element={AddRecipePage()} />
           <Route path='/browse-recipes' element={AddRecipePage()} />
           <Route path='/add-ingredient' element={AddIngPage()} />
-          {/* <Route path='/browse-ingredients' element={BrowseIngPage()} /> */}
+          <Route path='/browse-ingredients' element={BrowseIngPage()} />
           <Route path='/friends' element={FriendPage()} />
-          <Route path='/recipe' element={RecipePage()} />
+          {/* snapshots.filter(el => ((el.type === "data") && (el.message === "Ingredients"))).map((el, i) => JSON.parse(el.content)) */}
+          <Route path='/recipe' element={RecipePage(
+            // {
+            //   name: parsed[0].infoForm.name,
+            //   author: user.uid,
+            //   date: sample.created,
+            //   ingredients: parsed[0].ingForm,
+            //   method: parsed[0].method,
+
+            // }
+            {
+              name: "Baked Apple",
+              author: "User",
+              date: "20-01-2023",
+              ingredients: [{ ing: "Apple", amount: 1 }],
+              method: [{ step: "Bake" }],
+            }
+          )} />
           <Route path='/dbtest' element={DbTest()} />
         </Routes>
       </BrowserRouter>
