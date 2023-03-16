@@ -75,7 +75,7 @@ const DbTest = (props) => {
                 <List
                     // dataSource={snapshots.map((el, _) => el.val()).filter(el => ((el.type === "recipeaseData") && (el.message("Ingredients"))))}
                     // dataSource={snapshots.map((el, _) => el.val()).filter(el => ((el.type === "Ingredients")))}
-                    dataSource={allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe")))} // .filter(el => ((el.type === "data"))) // && (el.message("Recipe"))
+                    dataSource={allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Ingredients")))} // .filter(el => ((el.type === "data"))) // && (el.message("Recipe"))
                     renderItem={
                         (item) => (<List.Item>{item.content}</List.Item>)
 

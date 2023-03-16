@@ -17,6 +17,8 @@ import { ref, get, query, push, child, serverTimestamp, limitToLast } from 'fire
 import { db, auth } from "../../db";
 import { useContext, useState, useEffect } from 'react';
 import { Context } from "../../Context";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const { Search } = Input;
 
@@ -33,6 +35,8 @@ const HomePage = (props) => {
   const [filtered, setFiltered] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [filterIng, setFilterIng] = useState(false);
+
+  const navigate = useNavigate()
 
   const filter = () => {
     setFilterIng(!filterIng)
@@ -76,9 +80,10 @@ const HomePage = (props) => {
           </div>
           <Search className="search-input" placeholder="find recipe" onSearch={onSearch} enterButton />
         </div>
+        <Button onClick={filter} type="primary">{!filterIng ? "Show My Recipes" : "Show All Recipes"}</Button>
 
         <div className="recipe-box">
-          {sessionData.authLoading || sessionData.allDbLoading || !sessionData.allSnapshots ?
+          {sessionData.authLoading || sessionData.allDbLoading || !sessionData.allSnapshots || sessionData.dbLoading ?
             <>
               < Spin />
             </>
@@ -86,21 +91,36 @@ const HomePage = (props) => {
             :
 
             <>
-              <Button onClick={filter} type="primary">{!filterIng ? "Show What I Can Make" : "Show All Recipes"}</Button>
 
-              {sessionData.allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
-                <Card key={i}>
-                  <Card.Title
-                    title={el.infoForm.name} // Recipe name
-                  // user.uid // user string
-                  // also put some default placeholder image if one is missing
-                  />
-                  {/* <Card.Cover source={{ uri: el.content.infoForm.cover }} /> */}
-                </Card>
-              )}
+              {!filterIng ?
+                sessionData.allSnapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
+                  <Card key={i}
+                    onPress={() => navigate(`/recipe/${el.infoForm.name}`)}
+                  >
+                    <Card.Title
+                      title={el.infoForm.name}
+
+                    // Recipe name
+                    // user.uid // user string
+                    // also put some default placeholder image if one is missing
+                    />
+                    {/* <Card.Cover source={{ uri: (el.content.infoForm.cover ? el.content.infoForm.cover : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png") }} /> */}
+                  </Card>) :
+                sessionData.snapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
+                  <Card key={i}
+                    onPress={() => navigate(`/recipe/${el.infoForm.name}`)}
+                  >
+                    <Card.Title
+                      title={el.infoForm.name}
+
+                    // Recipe name
+                    // user.uid // user string
+                    // also put some default placeholder image if one is missing
+                    />
+                    {/* <Card.Cover source={{ uri: (el.content.infoForm.cover ? el.content.infoForm.cover : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png") }} /> */}
+                  </Card>)
+              }
             </>
-
-
           }
 
           {/* <CardBox></CardBox> */}
@@ -113,3 +133,33 @@ const HomePage = (props) => {
 }
 
 export default HomePage;
+
+//  {/* {filterIng ?
+
+//                 sessionData.allSnapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
+//                   <Card key={i}
+//                     onPress={navigate(`/recipe/${el.infoForm.name}`)}
+//                   >
+//                     <Card.Title
+//                       title={el.infoForm.name}
+
+//                     // Recipe name
+//                     // user.uid // user string
+//                     // also put some default placeholder image if one is missing
+//                     />
+//                     {/* <Card.Cover source={{ uri: el.content.infoForm.cover }} /> */}
+//                   {/* </Card>) :
+//                 sessionData.snapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
+//                   <Card key={i}
+//                     onPress={navigate(`/recipe/${el.infoForm.name}`)}
+//                   >
+//                     <Card.Title
+//                       title={el.infoForm.name} */}
+
+//                     {/* // Recipe name
+//                     // user.uid // user string
+//                     // also put some default placeholder image if one is missing
+//                     /> */}
+//                     {/* <Card.Cover source={{ uri: el.content.infoForm.cover }} /> */}
+//                   {/* </Card>)
+//               } */} */}

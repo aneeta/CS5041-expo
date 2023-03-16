@@ -19,6 +19,12 @@ const ING_TYPES = [
             { label: "Beverages", value: "Beverages" },
             { label: "Snacks & Sweets", value: "Snacks & Sweets" },
         ]
+    },
+    {
+        label: 'Other',
+        options: [
+            { label: "Miscallenous", value: "Miscallenous" },
+        ]
     }
 ]
 

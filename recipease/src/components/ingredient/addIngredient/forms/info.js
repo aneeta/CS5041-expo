@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-import { Input, Form, Select } from 'antd';
+import { Input, Form, Select, Tag } from 'antd';
 import { IngCtx } from '../../../../../Context';
 import ING_TYPES from '../../ingList'
 
-
+Text
 const formItemLayout = {
     labelCol: {
         span: 6,
@@ -19,8 +19,27 @@ const formItemLayout = {
 export default function InfoForm(props) {
     const { inputs, setInputs } = useContext(IngCtx);
 
+    // const [tag, setTag] = useState();
+
     const handleChange = (changedValues) => {
-        setInputs((prev) => ({ ...prev, ...changedValues }));
+        const changed = { ...{ cat: displayTag() }, ...changedValues }
+        setInputs((prev) => ({ ...prev, ...changed }));
+    }
+
+    const displayTag = () => {
+        const inFresh = ING_TYPES[0].options.flatMap((el) => (el.value)).includes(inputs.type);
+        const inCupboard = ING_TYPES[1].options.flatMap((el) => (el.value)).includes(inputs.type);
+        if (inFresh) {
+            // setTag(ING_TYPES[0].label)
+            return ING_TYPES[0].label
+        } else if (inCupboard) {
+            // setTag(ING_TYPES[1].label)
+            return ING_TYPES[1].label
+        } else {
+            // setTag(ING_TYPES[2].label)
+            return ING_TYPES[2].label
+        }
+
     }
 
     return (
@@ -55,6 +74,13 @@ export default function InfoForm(props) {
                 ]}
             >
                 <Select options={ING_TYPES} defaultValue={inputs.type} />
+            </Form.Item>
+            <Form.Item
+                name="cat"
+                label="Category"
+            >
+                <Tag>{displayTag()}
+                </Tag>
             </Form.Item>
         </Form>
     )

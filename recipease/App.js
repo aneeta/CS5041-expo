@@ -51,6 +51,14 @@ export default function App() {
   // const parsed = snapshots.filter(el => ((el.type === "data") && (el.message === "Recipe"))).map((el, i) => JSON.parse(el.content))
   // console.log(parsed)
 
+  const sampleProps = {
+    name: "Baked Apple",
+    author: "User",
+    date: "20-01-2023",
+    ingredients: [{ ing: "Apple", amount: 1 }],
+    method: [{ step: "Bake" }],
+  }
+
   return (
     <Context.Provider value={{ sessionData, setSessionData }}>
       <BrowserRouter>
@@ -63,12 +71,7 @@ export default function App() {
           <Route path='/browse-ingredients' element={<BrowseIngPage />} />
           <Route path='/friends' element={<FriendPage />} />
           {/* snapshots.filter(el => ((el.type === "data") && (el.message === "Ingredients"))).map((el, i) => JSON.parse(el.content)) */}
-          <Route path='/recipe' element={<RecipePage
-            name="Baked Apple"
-            author="User"
-            date="20-01-2023"
-            ingredients={[{ ing: "Apple", amount: 1 }]}
-            method={[{ step: "Bake" }]} />} />
+          <Route path='/recipe/:recipeId' element={<RecipePage {...sampleProps} />} />
           {/* // {
             //   name: parsed[0].infoForm.name,
             //   author: user.uid,
