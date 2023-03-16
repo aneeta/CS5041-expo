@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Space, Menu,  Breadcrumb } from 'antd';
+import { Layout, Space, Menu, Breadcrumb } from 'antd';
 import { LaptopOutlined, NotificationOutlined, DesktopOutlined, FileOutlined, PieChartOutlined, UserOutlined } from '@ant-design/icons';
 
 import { Link } from 'react-router-dom';
@@ -8,74 +8,83 @@ const { Header, Footer, Sider, Content } = Layout;
 
 
 const siderStyle = {
-    width: 200,
-    overflow: 'auto',
-    height: '100vh',
-    position: 'fixed',
-    textAlign: 'left',
-    lineHeight: '120px',
-    color: '#fff',
-    backgroundColor: '#3ba0e9',
-  };
+  width: 200,
+  overflow: 'auto',
+  height: '100vh',
+  position: 'fixed',
+  textAlign: 'left',
+  lineHeight: '120px',
+  color: '#fff',
+  backgroundColor: '#3ba0e9',
+};
 
-  function getItem(label, key, icon, children) {
-    return {
-      key,
-      icon,
-      children,
-      label,
-    };
-  }
+function getItem(label, key, icon, children) {
+  return {
+    key,
+    icon,
+    children,
+    label,
+  };
+}
 
 const siderItems = [
-    getItem('Home', '1', <DesktopOutlined />),
-    getItem('Recipes', '2', <UserOutlined />, [
-      getItem('Search', '3'),
-      getItem('Add', '4'),
-      getItem('Created', '5'),
-      getItem('Saved', '6'),
-    ]),
-    getItem('Ingredients', '7', <FileOutlined />, [
-      getItem('View', '8'),
-      getItem('Add', '9')]),
-    getItem('Profile', '10', <UserOutlined />),
-  ];
+  getItem('Home', '1', <DesktopOutlined />),
+  getItem('Recipes', '2', <UserOutlined />, [
+    getItem('Search', '3'),
+    getItem('Add', '4'),
+    getItem('Created', '5'),
+    getItem('Saved', '6'),
+  ]),
+  getItem('Ingredients', '7', <FileOutlined />, [
+    getItem('View', '8'),
+    getItem('Add', '9')]),
+  getItem('Profile', '10', <UserOutlined />),
+];
 
 // TODO fix 
 // Warning: [antd: Menu] `children` will be removed in next major version. Please use `items` instead.
 
 
 const Sidebar = (props) => (
-    <Sider style={siderStyle}>
-        <Menu
-            mode="inline"
-            style={{ height: '100%' }}
-            // items={siderItems}
-            >
-            <Menu.Item key='home-nav' icon={<DesktopOutlined />}>
-                <Link to={'/'}>Home</Link>
-            </Menu.Item>
-            <Menu.SubMenu key='recipe-nav' title="Recipe" icon={<DesktopOutlined />}>
-            <Menu.Item key='browse-recipe-nav'>
-                    <Link to={'/browse-recipes'}>Browse</Link>
-                </Menu.Item>
-                <Menu.Item key='add-recipe-nav'>
-                    <Link to={'/add-recipe'}>Add</Link>
-                </Menu.Item>
-            </Menu.SubMenu>
-            <Menu.SubMenu key='ing-nv' title="Ingredients" icon={<DesktopOutlined />}>
-                <Menu.Item key='browse-ing-nav'>
-                    <Link to={'/browse-ingredients'}>Browse</Link>
-                </Menu.Item>
-                <Menu.Item key='add-ing-nav'>
-                    <Link to={'/add-ingredient'}>Add</Link>
-                </Menu.Item>
-            </Menu.SubMenu>
-            <Menu.Item key='profile-nav' icon={<DesktopOutlined />}>
-                <Link to={'/profile'}>Profile</Link>
-            </Menu.Item>
-        </Menu>
-    </Sider>
+  <Sider style={siderStyle}>
+    <Menu
+      mode="inline"
+      style={{ height: '100%' }}
+    // items={siderItems}
+    >
+      <Menu.Item key='home-nav' icon={<DesktopOutlined />}>
+        <Link to={'/'}>Home</Link>
+      </Menu.Item>
+      <Menu.SubMenu key='recipe-nav' title="Recipe" icon={<DesktopOutlined />}>
+        <Menu.Item key='browse-recipe-nav'>
+          <Link to={'/browse-recipes'}>Browse</Link>
+        </Menu.Item>
+        <Menu.Item key='add-recipe-nav'>
+          <Link to={'/add-recipe'}>Add</Link>
+        </Menu.Item>
+      </Menu.SubMenu>
+      <Menu.SubMenu key='ing-nv' title="Ingredients" icon={<DesktopOutlined />}>
+        <Menu.Item key='browse-ing-nav'>
+          <Link to={'/browse-ingredients'}>Browse</Link>
+        </Menu.Item>
+        <Menu.Item key='add-ing-nav'>
+          <Link to={'/add-ingredient'}>Add</Link>
+        </Menu.Item>
+      </Menu.SubMenu>
+      <Menu.Item key='profile-nav' icon={<DesktopOutlined />}>
+        <Link to={'/profile'}>Profile</Link>
+      </Menu.Item>
+      <Menu.Item key='friend-nav' icon={<DesktopOutlined />}>
+        <Link to={'/friends'}>Friends Page</Link>
+      </Menu.Item>
+      <Menu.Item key='recipe-pag-nav' icon={<DesktopOutlined />}>
+        <Link to={'/recipe'}>Recipe Page</Link>
+      </Menu.Item>
+      <Menu.Item key='db-pag-nav' icon={<DesktopOutlined />}>
+        <Link to={'/dbtest'}>DB Test Page</Link>
+      </Menu.Item>
+    </Menu>
+  </Sider>
 )
 
 export default Sidebar;

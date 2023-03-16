@@ -17,11 +17,11 @@ const ProfilePage = (props) => (
                 <UserHeader></UserHeader>
             </div>
             <div className="user-content">
-            <CardBox></CardBox>
+            {/* <CardBox></CardBox> */}
             </div>
-            <div >
+            {/* <div >
                 <FBtn></FBtn>
-            </div>
+            </div> */}
         </div>
     </BaseLayout>
 )

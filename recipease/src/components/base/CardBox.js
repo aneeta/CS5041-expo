@@ -8,7 +8,8 @@ class CardBox extends Component{
           <div className='cards-main'>
             <div className='cards-box'>
                     {/* put cards here; now just 4 example cards */}
-                    <RecipeCard></RecipeCard>
+                    
+                    {/* <RecipeCard cardInfo = {this.props.info}></RecipeCard> */}
                     <RecipeCard></RecipeCard>
                     <RecipeCard></RecipeCard>
                     <RecipeCard></RecipeCard>
