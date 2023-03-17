@@ -52,7 +52,7 @@ export default function App() {
     // setSessionData((prev) => ({ ...prev, ...{ allRecipes: sessionData.allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "dataFinal") && (el.message == "Recipe"))) } }))
     // console.log("authenticated")
     // console.log(user)
-  }, [user, authLoading, authError, allSnapshots, allDbLoading, allDbError]);
+  }, [user, authLoading, authError, allSnapshots, allDbLoading, allDbError, ingredients]);
 
   // const sample = snapshots[0].val()
   // const parsed = snapshots.filter(el => ((el.type === "dataFinal") && (el.message === "Recipe"))).map((el, i) => JSON.parse(el.content))

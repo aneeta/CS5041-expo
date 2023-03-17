@@ -21,49 +21,49 @@ const HomePage = (props) => {
 
   return (
     <BaseLayout>
-      <div className="home-container">
-        <div className="search-bar">
-          <div className='search-brand'>
-            <span style={{
-              color: "black",
-              fontFamily: "sans-serif",
-              fontSize: "xx-large",
-              paddingBottom: "1%",
-            }} >
-              Recipease Home
-            </span>
-            <CoffeeOutlined className='search-icon' />
-          </div>
-        </div>
-        <Button onClick={filter} type="primary">{!filterIng ? "Show My Recipes" : "Show All Recipes"}</Button>
-
-        <div className="recipe-box">
-          <div className='cards-main'>
-            <div className='cards-box'>
-              {sessionData.authLoading || sessionData.allDbLoading || !sessionData.allSnapshots || sessionData.dbLoading ?
-                <>
-                  < Spin />
-                </>
-                :
-                <>
-                  {!filterIng ?
-                    sessionData.allSnapshots?.map((el, _) => el.val())
-                      .map((el, i) => Object.values(el)).flat()
-                      .filter(el => ((el.type === "dataFinal") && (el.message == "Recipe")))
-                      .map((el, _) => JSON.parse(el.content))
-                      .map((el, i) => <RecipeCard key={i} data={el.infoForm} />)
-                    :
-                    sessionData.snapshots?.map((el, _) => el.val())
-                      .filter(el => ((el.type === "dataFinal") && (el.message == "Recipe")))
-                      .map((el, i) => JSON.parse(el.content))
-                      .map((el, i) => <RecipeCard key={i} data={el.infoForm} />)
-                  }
-                </>
-              }
-            </div>
-          </div>
+      {/* <div className="home-container"> */}
+      <div className="search-bar">
+        <div className='search-brand'>
+          <span style={{
+            color: "black",
+            fontFamily: "sans-serif",
+            fontSize: "xx-large",
+            paddingBottom: "1%",
+          }} >
+            Recipease Home
+          </span>
+          <CoffeeOutlined className='search-icon' />
         </div>
       </div>
+      <Button onClick={filter} type="primary">{!filterIng ? "Show My Recipes" : "Show All Recipes"}</Button>
+
+      {/* <div className="recipe-box"> */}
+      <div className='cards-main'>
+        <div className='cards-box'>
+          {sessionData.authLoading || sessionData.allDbLoading || !sessionData.allSnapshots || sessionData.dbLoading ?
+            <>
+              < Spin />
+            </>
+            :
+            <>
+              {!filterIng ?
+                sessionData.allSnapshots?.map((el, _) => el.val())
+                  .map((el, i) => Object.values(el)).flat()
+                  .filter(el => ((el.type === "dataFinal") && (el.message == "Recipe")))
+                  .map((el, _) => JSON.parse(el.content))
+                  .map((el, i) => <RecipeCard key={i} data={el.infoForm} />)
+                :
+                sessionData.snapshots?.map((el, _) => el.val())
+                  .filter(el => ((el.type === "dataFinal") && (el.message == "Recipe")))
+                  .map((el, i) => JSON.parse(el.content))
+                  .map((el, i) => <RecipeCard key={i} data={el.infoForm} />)
+              }
+            </>
+          }
+        </div>
+      </div>
+      {/* </div> */}
+      {/* </div> */}
     </BaseLayout >
   )
 }
