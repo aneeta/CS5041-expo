@@ -17,6 +17,11 @@ import { Col } from "antd";
 
 import { TreeSelect } from 'antd';
 import { Descriptions } from "antd";
+import { Button } from "antd";
+
+import { remove, set } from 'firebase/database'
+import { message } from "antd";
+
 const { SHOW_PARENT } = TreeSelect;
 
 const BrowseIngPage = (props) => {
@@ -93,7 +98,7 @@ const BrowseIngPage = (props) => {
     //                         key: it.label,
     //                         children: sessionData.allSnapshots?.map((el, _) => el.val())
     //                             .flatMap((el) => Object.values(el)).flat()
-    //                             .filter(el => ((el.type === "data") && (el.message == "Ingredients")))
+    //                             .filter(el => ((el.type === "dataFinal") && (el.message == "Ingredients")))
     //                             .flatMap((el) => JSON.parse(el.content))
     //                             .map((el, _) => ({
     //                                 title: el.name,
@@ -128,7 +133,7 @@ const BrowseIngPage = (props) => {
 
     // const data = sessionData.allSnapshots.map((el, _) => el.val())
     //     .map((el, i) => Object.values(el)).flat()
-    //     .filter(el => ((el.type === "data") && (el.message == "Ingredient")))
+    //     .filter(el => ((el.type === "dataFinal") && (el.message == "Ingredient")))
     //     .map((el, _) => JSON.parse(el.content))
     //     .forEach(el => tree);
 
@@ -144,7 +149,7 @@ const BrowseIngPage = (props) => {
 
     // sessionData.allSnapshots.map((el, _) => el.val())
     //     .flatMap((el) => Object.values(el)).flat()
-    //     .filter(el => ((el.type === "data") && (el.message == "Ingredients")))
+    //     .filter(el => ((el.type === "dataFinal") && (el.message == "Ingredients")))
     //     .flatMap((el) => JSON.parse(el.content))
     //     .forEach(el => {
     //         treeData[getIdxCat(el.cat)]?.children[getIdxType(el.cat, el.type)]?.children.push(el.name)
@@ -153,7 +158,7 @@ const BrowseIngPage = (props) => {
     // console.log(
     //     sessionData.allSnapshots?.map((el, _) => el.val())
     //         .flatMap((el) => Object.values(el)).flat()
-    //         .filter(el => ((el.type === "data") && (el.message == "Ingredients")))
+    //         .filter(el => ((el.type === "dataFinal") && (el.message == "Ingredients")))
     //         .flatMap((el) => JSON.parse(el.content))
     // )
 
@@ -170,6 +175,10 @@ const BrowseIngPage = (props) => {
             title: 'Ingredient',
             dataIndex: 'name',
         },
+        // {
+        //     title: 'Added',
+        //     dataIndex: 'created',
+        // },
     ];
 
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -187,13 +196,32 @@ const BrowseIngPage = (props) => {
         ]
     };
 
+    console.log(sessionData.ingredients?.map((el, _) => el.val())
+        // .flatMap((el) => Object.values(el))
+        // .flatMap((el) => JSON.parse(el.content))
+    )
+
+    const clearList = () => {
+        if (sessionData.privRef) {
+            remove(sessionData.privRef)
+            // set(sessionData.privRef, [])
+            // )
+            //     .then(message.success("Cleared list!"))
+            //     .catch(message.error("Clear failed!"))
+        }
+    }
+
     return (
         <BaseLayout>
+            <Divider orientation="right">Shopping List</Divider>
             {/* rowSelection={rowSelection} */}
-            <Table columns={columns} dataSource={sessionData.snapshots?.map((el, _) => el.val())
-                .flatMap((el) => Object.values(el)).flat()
-                .filter(el => ((el.type === "data") && (el.message == "Ingredients")))
-                .flatMap((el) => JSON.parse(el.content))} />
+            <Table columns={columns} dataSource={sessionData.ingredients?.map((el, _) => el.val()).map((el, i) => JSON.parse(el.content))
+                // .flatMap((el) => Object.values(el))
+                // .filter(el => ((el.type === "dataFinal")))
+                // .flatMap((el) => JSON.parse(el.content))} 
+            }
+            />
+            <Button onClick={() => clearList()}>Clear</Button>
         </BaseLayout>
 
     )
@@ -252,7 +280,7 @@ const BrowseIngPage = (props) => {
 
     //         {/* {console.log(sessionData.allSnapshots?.map((el, _) => el.val())
     //             .map((el, i) => Object.values(el)).flat()
-    //             .filter(el => ((el.type === "data") && (el.message == "Ingredients")))
+    //             .filter(el => ((el.type === "dataFinal") && (el.message == "Ingredients")))
     //             .map((el, _) => JSON.parse(el.content)))}
     //         <TreeSelect {...tProps} /> */}
     //         {/* {console.log(myings)} */}

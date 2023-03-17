@@ -46,7 +46,7 @@ const HomePage = (props) => {
   }
 
   // useEffect(() => {
-  //   const fil = sessionData.allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content))
+  //   const fil = sessionData.allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "dataFinal") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content))
   //   setFiltered(fil)
   // }, [sessionData]);
 
@@ -98,7 +98,7 @@ const HomePage = (props) => {
                 <>
 
                   {!filterIng ?
-                    sessionData.allSnapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
+                    sessionData.allSnapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "dataFinal") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
                       // console.log(el))
                       <RecipeCard key={i} data={el.infoForm} />)
                     // (el.infoForm) ? <RecipeCard data={el.infoForm} /> : "")
@@ -111,7 +111,7 @@ const HomePage = (props) => {
                     //   <Card.Cover source={{ uri: (el.content.infoForm.cover ? el.content.infoForm.cover : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png") }} />
                     // </Card>) 
                     :
-                    sessionData.snapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
+                    sessionData.snapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "dataFinal") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
                       <RecipeCard key={i} data={el.infoForm} />)
                   }
 
@@ -129,7 +129,7 @@ export default HomePage;
 
 //  {/* {filterIng ?
 
-//                 sessionData.allSnapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
+//                 sessionData.allSnapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "dataFinal") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
 //                   <Card key={i}
 //                     onPress={navigate(`/recipe/${el.infoForm.name}`)}
 //                   >
@@ -142,7 +142,7 @@ export default HomePage;
 //                     />
 //                     {/* <Card.Cover source={{ uri: el.content.infoForm.cover }} /> */}
 //                   {/* </Card>) :
-//                 sessionData.snapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
+//                 sessionData.snapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "dataFinal") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
 //                   <Card key={i}
 //                     onPress={navigate(`/recipe/${el.infoForm.name}`)}
 //                   >

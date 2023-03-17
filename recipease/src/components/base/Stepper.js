@@ -25,20 +25,21 @@ function CustomStepper(props) {
     }, []);
 
     const submitData = () => {
+        const path = (props.formName === "Recipe") ? "public" : "private"
 
-        const reference = push(child(user ? ref(db) : null, `/public/${user.uid}`), {
+        const reference = push(child(user ? ref(db) : null, `/${path}/${user.uid}`), {
             created: serverTimestamp(),
             modified: serverTimestamp(),
-            type: "test",
+            type: "dataFinal",
             message: `${props.formName}`,
             content: JSON.stringify(props.data)
         })
 
-        console.log(JSON.stringify(props.data).length)
+        console.log(reference)
+
 
         // const [snapshots, dbLoading, dbError] = useList(user ? ref(db, '/public') : null);
 
-        console.log(reference)
 
         // message.success('Added!')
 

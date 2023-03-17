@@ -20,7 +20,7 @@ const RecipePage = (props) => {
 
 
 
-    const recipeFilter = (el) => ((el.type === "data") && (el.message == "Recipe"))
+    const recipeFilter = (el) => ((el.type === "dataFinal") && (el.message == "Recipe"))
 
     console.log(
         sessionData.allSnapshots?.map((el, _) => [el.key, el.val()])
@@ -58,7 +58,7 @@ const RecipePage = (props) => {
     // .filter((el) => (el[2].infoForm.name === params.recipeId))[0]
 
     // .map(([k, v]) => [k, v.flat()]))
-    // .filter(([k, v]) => ((v.type === "data") && (v.message == "Recipe")))
+    // .filter(([k, v]) => ((v.type === "dataFinal") && (v.message == "Recipe")))
     // .map(([k, v], _) => [k, v, JSON.parse(v.content)])
     // .filter(el => (el[2].infoForm.name === params.recipeId))[0]
     // const author = 

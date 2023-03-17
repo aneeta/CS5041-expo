@@ -24,7 +24,7 @@ export default function RecipeCard(props) {
             <Card.Content>
                 {(props.data.cuisines) ?
                     <>
-                        <Divider orientation='left'>Cuisines</Divider>
+                        <Divider orientation='right'>Cuisines</Divider>
                         <Space size={[0, 4]} wrap>
                             {props.data.cuisines?.map((el, _) => <Tag color="gold">{el}</Tag>)}
                         </Space>
@@ -33,8 +33,7 @@ export default function RecipeCard(props) {
                 }
                 {(props.data.occasions) ?
                     <>
-                        <Divider orientation='left'>Cuisines</Divider>
-                        <Divider orientation='left'>Occasions</Divider>
+                        <Divider orientation='right'>Occasions</Divider>
                         <Space size={[0, 4]} wrap>
                             {props.data.occasions?.map((el, _) => <Tag color="geekblue">{el}</Tag>)}
                         </Space>
