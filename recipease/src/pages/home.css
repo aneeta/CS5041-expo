@@ -43,6 +43,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: center;
     /* background-color: rgb(15, 38, 110); */
 
 }
@@ -55,14 +56,14 @@
 }
 
 .cards-box{
-    margin-left: 15%;
+    /* margin-left: 15%; */
     display:flex;
     flex-flow: row wrap;
     /* justify-content: center; */
-    max-width: 1000px;
-    /* min-width: 1070px; */
+    max-width: 1300px;
+    min-width: 1200px;
     /* width: auto!important; */
-    width: 100%;
+    /* width: 100%; */
     /* background-color: rgb(127, 142, 192); */
     /* the height will be adjust with the data; the box will have a scroll bar */
     height: auto;
