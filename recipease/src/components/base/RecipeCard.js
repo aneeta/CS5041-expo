@@ -12,11 +12,11 @@ export default function RecipeCard(props) {
         <Card
             key={props.key}
             style={{
-                marginLeft: 10,
-                marginRight: 10,
+                marginLeft: 15,
+                marginRight: 15,
                 marginTop: 10,
                 marginBottom: props.i === props.iMax - 1 ? 10 : 0,
-                width: 200
+                width: 250
             }}
             onPress={() => navigate(`/recipe/${props.data?.name}`)}
         >
@@ -27,7 +27,7 @@ export default function RecipeCard(props) {
             <Card.Content>
                 {(props.data.cuisines) ?
                     <>
-                        <Divider orientation='right'>Cuisines</Divider>
+                        <Divider orientation='center'>Cuisines</Divider>
                         <Space size={[0, 4]} wrap>
                             {props.data.cuisines?.map((el, _) => <Tag color="gold">{el}</Tag>)}
                         </Space>
@@ -36,7 +36,7 @@ export default function RecipeCard(props) {
                 }
                 {(props.data.occasions) ?
                     <>
-                        <Divider orientation='right'>Occasions</Divider>
+                        <Divider orientation='center'>Occasions</Divider>
                         <Space size={[0, 4]} wrap>
                             {props.data.occasions?.map((el, _) => <Tag color="geekblue">{el}</Tag>)}
                         </Space>

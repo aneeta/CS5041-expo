@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 .user-log{
     width: 100%;
@@ -42,19 +43,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background-color: rgb(15, 38, 110); */
+
 }
 .cards-main{
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
     width: auto;
     height: 100%;
-    /* background-color: rgb(23, 36, 80); */
 }
 
 .cards-box{
+    margin-left: 15%;
     display:flex;
     flex-flow: row wrap;
+    /* justify-content: center; */
     max-width: 1000px;
     /* min-width: 1070px; */
     /* width: auto!important; */
