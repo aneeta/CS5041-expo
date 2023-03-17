@@ -16,6 +16,7 @@
     width: 75%;
     height: 20%;
     /* background-color: cornflowerblue; */
+    overflow: hidden;
 
 
 }
@@ -28,6 +29,7 @@
     object-fit: cover;
     object-position: 100% 33%;
     /* overflow: hidden; */
+
 }
 
 .info-bar {

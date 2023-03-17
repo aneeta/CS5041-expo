@@ -12,17 +12,19 @@ export default function RecipeCard(props) {
         <Card
             key={props.key}
             style={{
-                marginLeft: 10,
-                marginRight: 10,
+                marginLeft: 15,
+                marginRight: 15,
                 marginTop: 10,
                 marginBottom: props.i === props.iMax - 1 ? 10 : 0,
-                width: 200
+                width: 250
             }}
             onPress={() => navigate(`/recipe/${props.data?.name}`)}
         >
             <Card.Cover source={{ uri: (props.data.cover ? props.data.cover : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png") }} />
             <Card.Title
                 title={props.data?.name}
+                titleVariant="titleLarge"
+                titleStyle={{ fontWeight: "bold" }}
             />
             <Card.Content>
                 {(props.data.cuisines) ?

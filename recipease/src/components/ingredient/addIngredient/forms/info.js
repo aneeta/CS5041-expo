@@ -19,8 +19,6 @@ const formItemLayout = {
 export default function InfoForm(props) {
     const { inputs, setInputs } = useContext(IngCtx);
 
-    // const [tag, setTag] = useState();
-
     const handleChange = (changedValues) => {
         const changed = { ...{ cat: displayTag() }, ...changedValues }
         setInputs((prev) => ({ ...prev, ...changed }));
@@ -30,16 +28,12 @@ export default function InfoForm(props) {
         const inFresh = ING_TYPES[0].options.flatMap((el) => (el.value)).includes(inputs.type);
         const inCupboard = ING_TYPES[1].options.flatMap((el) => (el.value)).includes(inputs.type);
         if (inFresh) {
-            // setTag(ING_TYPES[0].label)
             return ING_TYPES[0].label
         } else if (inCupboard) {
-            // setTag(ING_TYPES[1].label)
             return ING_TYPES[1].label
         } else {
-            // setTag(ING_TYPES[2].label)
             return ING_TYPES[2].label
         }
-
     }
 
     return (
@@ -59,7 +53,7 @@ export default function InfoForm(props) {
                         message: 'Please choose ingredient name!',
                     },
                 ]}>
-                <Input defaultValue={inputs.name} />
+                <Input initialValue={inputs.name} />
             </Form.Item>
 
             <Form.Item
@@ -73,7 +67,7 @@ export default function InfoForm(props) {
                     },
                 ]}
             >
-                <Select options={ING_TYPES} defaultValue={inputs.type} />
+                <Select options={ING_TYPES} initialValue={inputs.type} />
             </Form.Item>
             <Form.Item
                 name="cat"
