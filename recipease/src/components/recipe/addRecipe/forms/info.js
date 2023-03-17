@@ -57,7 +57,7 @@ export default function InfoForm() {
                         message: 'Please choose recipe name!',
                     },
                 ]}>
-                <Input defaultValue={inputs.infoForm?.name} />
+                <Input initialValue={inputs.infoForm?.name} />
             </Form.Item>
 
             <Form.Item
@@ -71,7 +71,7 @@ export default function InfoForm() {
                     },
                 ]}
             >
-                <Select defaultValue={inputs.infoForm?.meal}>
+                <Select initialValue={inputs.infoForm?.meal}>
                     {meals.map((el, i) => <Option value={el} key={el}>{el}</Option>)}
                 </Select>
             </Form.Item>
@@ -87,7 +87,7 @@ export default function InfoForm() {
                     },
                 ]}
             >
-                <Select mode="multiple" defaultValue={inputs.infoForm?.cuisines}>
+                <Select mode="multiple" initialValue={inputs.infoForm?.cuisines}>
                     {cuisines.map((el, i) => <Option value={el} key={el}>{el}</Option>)}
                 </Select>
             </Form.Item>
@@ -103,7 +103,7 @@ export default function InfoForm() {
                     },
                 ]}
             >
-                <Select mode="multiple" defaultValue={inputs.infoForm?.occasions}>
+                <Select mode="multiple" initialValue={inputs.infoForm?.occasions}>
                     {occasion.map((el, i) => <Option value={el} key={el}>{el}</Option>)}
                 </Select>
             </Form.Item>
@@ -112,7 +112,7 @@ export default function InfoForm() {
                 name="cover"
                 label="Cover Image URL"
             >
-                <Input defaultValue={inputs.infoForm?.cover} />
+                <Input initialValue={inputs.infoForm?.cover} />
             </Form.Item>
         </Form >
     )

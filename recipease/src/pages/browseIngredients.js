@@ -26,14 +26,10 @@ const BrowseIngPage = (props) => {
     ];
 
 
-    console.log(sessionData.ingredients?.map((el, _) => el.val())
-        // .flatMap((el) => Object.values(el))
-        // .flatMap((el) => JSON.parse(el.content))
-    )
-
     const clearList = () => {
-        if (sessionData.privRef) {
-            remove(sessionData.privRef)
+        if (sessionData.ingredients) {
+            sessionData.ingredients.forEach(el => { remove(el.ref) });
+            // sessionData.privRef.remove()
             // set(sessionData.privRef, [])
             // )
             //     .then(message.success("Cleared list!"))

@@ -51,17 +51,17 @@ const DbTest = (props) => {
 
     const submitData = () => {
 
-        const reference = remove(child(user ? ref(db) : null, `/private/${user.uid}`) //, []
-            // {
-            //     username: 'test'
-            //     // type: 'test',
-            //     // created: serverTimestamp(),
-            //     // modified: serverTimestamp(),
-            //     // message: "Sample text",
-            //     // content: JSON.stringify({ val1: 1, val2: 2 })
+        const reference = child(`/private/${user.uid}`).remove() //, []
+        // {
+        //     username: 'test'
+        //     // type: 'test',
+        //     // created: serverTimestamp(),
+        //     // modified: serverTimestamp(),
+        //     // message: "Sample text",
+        //     // content: JSON.stringify({ val1: 1, val2: 2 })
 
-            // }
-        )
+        // }
+
 
         console.log(reference)
     }

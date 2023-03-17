@@ -13,8 +13,8 @@ import DbTest from './src/pages/dbTest';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signInAnonymously } from "firebase/auth";
-import { useList, useListVals } from 'react-firebase-hooks/database';
-import { ref, push, child, serverTimestamp } from 'firebase/database'
+import { useList } from 'react-firebase-hooks/database';
+import { ref } from 'firebase/database'
 import { db, auth } from "./db";
 import BrowseIngPage from './src/pages/browseIngredients';
 import BrowseRecipePage from './src/pages/browseRecipes';
