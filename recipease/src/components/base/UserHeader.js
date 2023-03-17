@@ -27,7 +27,7 @@ class UserHeader extends Component{
                         <span className='username'>Username</span>                        
                         <div className='user-info-item'>
                             <span style={{marginLeft:'3px', fontSize:'18px',color: 'rgb(0, 0, 0)'}}>Followers: 43</span>
-                            <button className='btn-follow'>+ Follow</button>
+                            {/* <button className='btn-follow'>+ Follow</button> */}
                         </div>
                     </div>
 

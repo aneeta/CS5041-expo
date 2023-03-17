@@ -17,6 +17,7 @@ import { ref, get, query, push, child, serverTimestamp, limitToLast } from 'fire
 import { db, auth } from "../../db";
 import { useContext, useState, useEffect } from 'react';
 import { Context } from "../../Context";
+import RecipeCard from "../components/base/RecipeCard";
 
 const { Search } = Input;
 
@@ -61,26 +62,27 @@ const HomePage = (props) => {
         </div>
 
         <div className="recipe-box">
+
+            <div className='cards-main'>
+                <div className='cards-box'>
+
+                    
+
           {authLoading || dbLoading || !snapshots ?
             <>
               < Spin />
             </>
 
             :
-            snapshots.filter(el => ((el.type === "data"))).map((el, i) => JSON.parse(el.content)).map((el, i) => (
-
-              <Card>
-                <Card.Title
-                  title={el.infoForm.name} // Recipe name
-                // user.uid // user string
-                // also put some default placeholder image if one is missing
-                />
-                {/* <Card.Cover source={{ uri: el.content.infoForm.cover }} /> */}
-              </Card>
+            snapshots?.filter(el => ((el.type === "data") || (el.type === "test") )).map((el, i) => JSON.parse(el.content)).map((el, i) => (
+              (el.infoForm)? <RecipeCard aaa = {el.infoForm} user = {user}></RecipeCard>:""
             ))
-          }
+            }
+            
 
-          {/* <CardBox></CardBox> */}
+                </div>
+            </div>  
+         
         </div>
 
       </div>

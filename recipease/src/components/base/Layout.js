@@ -63,7 +63,7 @@ const BaseLayout = (props) => {
                   fontFamily: "sans-serif",
                   fontSize: "xx-large",
                 }} >
-                  Recipe
+                  Recipease
                 </span>
                 <div className='header-icon-box'>
                   <CoffeeOutlined className='header-icon' />
@@ -71,35 +71,7 @@ const BaseLayout = (props) => {
               </div>
             </div>
 
-            {/* <div
-          style={{
-            float: 'right',
-            width: 150,
-            height: 36,
-            margin: '16px 24px 16px 0',<Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%',display:"flex"}}>
-        
-            background: 'rgba(255, 255, 255, 0.2)',
-          }}
-        >
-            <Card.Title
-              title="Recipease"
-              titleStyle={{}}
-              right={(props) => <Avatar.Icon {...props} icon="folder" />}
-              rightStyle={{}}
-            /> */}
-            {/* <Avatar.Icon size={24} icon="folder" /> */}
-            {/* <AppLogo color='white'/> */}
-            {/* </div> */}
 
-            {/* <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['2']}
-          items={new Array(3).fill(null).map((_, index) => ({
-            key: String(index + 1),
-            label: `nav ${index + 1}`,
-          }))}
-        /> */}
           </Header>
 
 
