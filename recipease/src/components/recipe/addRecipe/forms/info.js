@@ -106,17 +106,24 @@ export default function InfoForm() {
                 </Select>
             </Form.Item>
 
-            <Form.Item label="Cover Image" name="cover">
+            <Form.Item
+                name="cover"
+                label="Cover Image URL"
+            >
+                <Input defaultValue={inputs.infoForm?.cover} />
+            </Form.Item>
+
+            {/* <Form.Item label="Cover Image" name="cover">
                 <Form.Item noStyle>
-                    <Upload.Dragger maxCount="1" accept="image" name="files" action="/upload.do">
+                    <Upload.Dragger maxCount="1" accept="image" name="coverImg" beforeUpload={() => false} onValuesChange={handleChange}>
                         <p className="ant-upload-drag-icon">
                             <InboxOutlined />
                         </p>
                         <p className="ant-upload-text">Choose Recipe Cover</p>
-                        {/* <p className="ant-upload-hint">Support for a single or bulk upload.</p> */}
-                    </Upload.Dragger>
-                </Form.Item>
-            </Form.Item>
-        </Form>
+                        <p className="ant-upload-hint">Support for a single or bulk upload.</p>
+        </Upload.Dragger>
+                </Form.Item >
+            </Form.Item > */}
+        </Form >
     )
 }
