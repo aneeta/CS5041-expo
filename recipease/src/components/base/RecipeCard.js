@@ -1,20 +1,23 @@
-import React, { Component } from 'react';
-
-import { Avatar, Button, Card, Text } from 'react-native-paper';
+import { useNavigate } from 'react-router-dom';
+import { Card } from 'react-native-paper';
 import { Divider, Space, Tag } from 'antd';
 
-
 import './RecipeCard.css';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-
 
 export default function RecipeCard(props) {
     const navigate = useNavigate()
 
     return (
         // <div className='card-container'>
-        <Card key={props.key}
+        <Card
+            key={props.key}
+            style={{
+                marginLeft: 10,
+                marginRight: 10,
+                marginTop: 10,
+                marginBottom: props.i === props.iMax - 1 ? 10 : 0,
+                width: 200
+            }}
             onPress={() => navigate(`/recipe/${props.data?.name}`)}
         >
             <Card.Cover source={{ uri: (props.data.cover ? props.data.cover : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png") }} />

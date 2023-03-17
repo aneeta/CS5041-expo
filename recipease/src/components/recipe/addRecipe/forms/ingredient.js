@@ -1,12 +1,15 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Select, Space, AutoComplete } from 'antd';
 import { RecipeCtx } from '../../../../../Context';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
-// placeholder data
-const ingredients = [{ value: "Carrot" }, { value: "Butter" }, { value: "Flour" }]
-const units = ["g", "tsp", "tbsp", "cup"]
+// helper data
+const ingredients = [
+    { value: "Milk" },
+    { value: "Eggs" },
+    { value: "Flour" },
+    { value: "Salt" }
+]
 
 const { Option } = Select;
 

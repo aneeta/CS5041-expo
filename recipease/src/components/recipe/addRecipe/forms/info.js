@@ -2,12 +2,14 @@ import { useContext, useEffect, useState } from 'react';
 import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
 import { Input, Form, Select, Upload } from 'antd';
 import { RecipeCtx } from '../../../../../Context';
+import RECIPE_TYPES from '../../typeList';
 
+RECIPE_TYPES
 
-// placeholder data
-const cuisines = ["Thai", "Indian", "French", "American", "Chinese", "Turkish", "Mexican"]
-const meals = ["Breakfast", "Brunch", "Lunch", "Dinner", "Dessert", "Snack"]
-const occasion = ["Christmas", "Birthday", "Halloween", "Valentines", "Thanksgiving"]
+// schema
+const cuisines = RECIPE_TYPES.cuisines
+const meals = RECIPE_TYPES.meals
+const occasion = RECIPE_TYPES.occasion
 
 const { Option } = Select;
 
@@ -112,18 +114,6 @@ export default function InfoForm() {
             >
                 <Input defaultValue={inputs.infoForm?.cover} />
             </Form.Item>
-
-            {/* <Form.Item label="Cover Image" name="cover">
-                <Form.Item noStyle>
-                    <Upload.Dragger maxCount="1" accept="image" name="coverImg" beforeUpload={() => false} onValuesChange={handleChange}>
-                        <p className="ant-upload-drag-icon">
-                            <InboxOutlined />
-                        </p>
-                        <p className="ant-upload-text">Choose Recipe Cover</p>
-                        <p className="ant-upload-hint">Support for a single or bulk upload.</p>
-        </Upload.Dragger>
-                </Form.Item >
-            </Form.Item > */}
         </Form >
     )
 }

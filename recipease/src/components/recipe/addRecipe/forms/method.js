@@ -9,7 +9,7 @@ const { Option } = Select;
 
 const formItemLayout = {
     labelCol: {
-        span: 6,
+        span: 10,
     },
     wrapperCol: {
         span: 14,
@@ -60,9 +60,9 @@ export default function MethodForm() {
                                         },
                                     ]}
                                 >
-                                    <Input />
+                                    <Input style={{ width: 400 }} />
                                 </Form.Item>
-                                {/* <MinusCircleOutlined onClick={() => remove(field.name)} /> */}
+                                <MinusCircleOutlined onClick={() => remove(field.name)} />
                             </Space>
                         ))}
 
