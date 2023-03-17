@@ -29,7 +29,7 @@ function CustomStepper(props) {
         const reference = push(child(user ? ref(db) : null, `/public/${user.uid}`), {
             created: serverTimestamp(),
             modified: serverTimestamp(),
-            type: "data",
+            type: "test",
             message: `${props.formName}`,
             content: JSON.stringify(props.data)
         })

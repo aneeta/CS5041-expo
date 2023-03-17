@@ -19,6 +19,7 @@ import { useContext, useState, useEffect } from 'react';
 import { Context } from "../../Context";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import RecipeCard from "../components/base/RecipeCard";
 
 const { Search } = Input;
 
@@ -36,7 +37,6 @@ const HomePage = (props) => {
   const [recipes, setRecipes] = useState([]);
   const [filterIng, setFilterIng] = useState(false);
 
-  const navigate = useNavigate()
 
   const filter = () => {
     setFilterIng(!filterIng)
@@ -83,52 +83,45 @@ const HomePage = (props) => {
         <Button onClick={filter} type="primary">{!filterIng ? "Show My Recipes" : "Show All Recipes"}</Button>
 
         <div className="recipe-box">
-          {sessionData.authLoading || sessionData.allDbLoading || !sessionData.allSnapshots || sessionData.dbLoading ?
-            <>
-              < Spin />
-            </>
+          <div className='cards-main'>
+            <div className='cards-box'>
+              {sessionData.authLoading || sessionData.allDbLoading || !sessionData.allSnapshots || sessionData.dbLoading ?
 
-            :
 
-            <>
 
-              {!filterIng ?
-                sessionData.allSnapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
-                  <Card key={i}
-                    onPress={() => navigate(`/recipe/${el.infoForm.name}`)}
-                  >
-                    <Card.Title
-                      title={el.infoForm.name}
+                <>
+                  < Spin />
+                </>
 
-                    // Recipe name
-                    // user.uid // user string
-                    // also put some default placeholder image if one is missing
-                    />
-                    {/* <Card.Cover source={{ uri: (el.content.infoForm.cover ? el.content.infoForm.cover : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png") }} /> */}
-                  </Card>) :
-                sessionData.snapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
-                  <Card key={i}
-                    onPress={() => navigate(`/recipe/${el.infoForm.name}`)}
-                  >
-                    <Card.Title
-                      title={el.infoForm.name}
+                :
 
-                    // Recipe name
-                    // user.uid // user string
-                    // also put some default placeholder image if one is missing
-                    />
-                    {/* <Card.Cover source={{ uri: (el.content.infoForm.cover ? el.content.infoForm.cover : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png") }} /> */}
-                  </Card>)
+                <>
+
+                  {!filterIng ?
+                    sessionData.allSnapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
+                      // console.log(el))
+                      <RecipeCard key={i} data={el.infoForm} />)
+                    // (el.infoForm) ? <RecipeCard data={el.infoForm} /> : "")
+                    // <Card key={i}
+                    //   onPress={() => navigate(`/recipe/${el.infoForm.name}`)}
+                    // >
+                    //   <Card.Title
+                    //     title={el.infoForm.name}
+                    //   />
+                    //   <Card.Cover source={{ uri: (el.content.infoForm.cover ? el.content.infoForm.cover : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png") }} />
+                    // </Card>) 
+                    :
+                    sessionData.snapshots?.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))).map((el, _) => JSON.parse(el.content)).map((el, i) =>
+                      <RecipeCard key={i} data={el.infoForm} />)
+                  }
+
+                </>
               }
-            </>
-          }
-
-          {/* <CardBox></CardBox> */}
+            </div>
+          </div>
         </div>
-
       </div>
-
-    </BaseLayout>
+    </BaseLayout >
   )
 }
 
