@@ -4,7 +4,7 @@ import { Context } from "../../Context";
 import BaseLayout from "../components/base/Layout";
 import RecipeCard from "../components/base/RecipeCard";
 import RECIPE_TYPES from "../components/recipe/typeList";
-
+import './browseRecipes.css';
 
 // schema
 const cuisines = RECIPE_TYPES.cuisines
@@ -56,7 +56,7 @@ const BrowseRecipePage = (props) => {
     //     .map((el, _) => JSON.parse(el.content)))
     return (
         <BaseLayout>
-            <Divider orientation="right">Filters</Divider>
+            <Divider orientation="center">Filters</Divider>
             <Form
                 onValuesChange={onChange}
             >
@@ -85,8 +85,8 @@ const BrowseRecipePage = (props) => {
                     </Select>
                 </Form.Item>
             </Form>
-            <Divider orientation="right">Recipes</Divider>
-            <div className="recipe-box">
+            <Divider orientation="center">Recipes</Divider>
+            <div className="box">
                 <div className='cards-main'>
                     <div className='cards-box'>
                         {
