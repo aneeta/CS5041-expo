@@ -27,16 +27,17 @@ const BrowseRecipePage = (props) => {
                 .map((el, i) => Object.values(el)).flat()
                 .filter(el => ((el.type === "dataFinal") && (el.message == "Recipe")))
                 .map((el, _) => JSON.parse(el.content))
+                .filter((el) => filterRecipes(el))
         )
-        console.log(filter)
+        // console.log(filter)
     }
 
     const filterRecipes = (r) => {
-        console.log("filter", r)
+        // console.log("filters", filter.meal?.includes(r.infoForm.meal))
         return (
-            (filter.meal?.includes(r.infoForm.meal) || !filter.meal)
-            && (filter.cuisines?.some(i => r.infoForm.cuisines?.includes(i)) || !filter.cuisines)
-            && (filter.occasions?.some(i => r.infoForm.occasions?.includes(i)) || !filter.occasions)
+            (filter.meal?.includes(r.infoForm.meal) || !filter.meal || filter.meal.length === 0)
+            && (filter.cuisines?.some(i => r.infoForm.cuisines?.includes(i)) || !filter.cuisines || filter.cuisines.length === 0)
+            && (filter.occasions?.some(i => r.infoForm.occasions?.includes(i)) || !filter.occasions || filter.occasions.length === 0)
         )
     }
 
