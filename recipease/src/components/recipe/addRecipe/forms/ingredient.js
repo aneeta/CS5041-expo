@@ -5,6 +5,7 @@ import { RecipeCtx } from '../../../../../Context';
 
 // helper data
 const ingredients = [
+    { value: "Butter" },
     { value: "Milk" },
     { value: "Eggs" },
     { value: "Flour" },
@@ -21,7 +22,8 @@ const formItemLayout = {
         span: 14,
     },
 
-    padding: 10
+    padding: 10,
+
 };
 
 
@@ -47,7 +49,7 @@ export default function IngForm() {
             {...formItemLayout}
             form={form}
             onValuesChange={handleChange}
-            style={{ maxWidth: 700, margin: 20, alignItems: 'center' }}>
+            style={{ maxWidth: 700, margin: 20 }}>
 
             <Form.List name="ingData">
                 {(fields, { add, remove }) => (
@@ -68,20 +70,12 @@ export default function IngForm() {
                                     ]}
                                 >
                                     <AutoComplete
-                                        style={{ width: 130 }}
+                                        style={{ width: 200 }}
                                         options={ingredients}
-                                        placeholder="Type ingredient"
                                         filterOption={(inputValue, option) =>
                                             option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                                         }
                                     />
-                                    {/* <Select
-                                        style={{
-                                            width: 130,
-                                        }}
-                                    >
-                                        {ingredients.map((el, i) => <Option value={el} key={el}>{el}</Option>)}
-                                    </Select> */}
                                 </Form.Item>
                                 <Form.Item
                                     {...field}

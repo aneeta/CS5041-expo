@@ -43,18 +43,6 @@ const Sidebar = (props) => (
           <Link to={'/add-ingredient'}>Add Item</Link>
         </Menu.Item>
       </Menu.SubMenu>
-      {/* <Menu.Item key='profile-nav' icon={<HomeOutlined />}>
-        <Link to={'/profile'}>Profile</Link>
-      </Menu.Item> */}
-      {/* <Menu.Item key='friend-nav' icon={<HomeOutlined />}>
-        <Link to={'/friends'}>Friends Page</Link>
-      </Menu.Item> */}
-      {/* <Menu.Item key='recipe-pag-nav' icon={<HomeOutlined />}>
-        <Link to={'/recipe'}>Recipe Page</Link>
-      </Menu.Item> */}
-      <Menu.Item key='db-pag-nav' icon={<HomeOutlined />}>
-        <Link to={'/dbtest'}>DB Test Page</Link>
-      </Menu.Item>
     </Menu>
   </Sider>
 )

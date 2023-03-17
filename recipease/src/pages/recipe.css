@@ -27,9 +27,9 @@
     height: 400px;
     border-radius: 5px;
     object-fit: cover;
-    object-position: 90% 33%;
+    object-position: 100% 33%;
     /* overflow: hidden; */
-    
+
 }
 
 .info-bar {

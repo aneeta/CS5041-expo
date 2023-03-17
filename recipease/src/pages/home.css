@@ -1,22 +1,25 @@
-.home-container{
-    width: 100%;
-    height: 100%;
+.home-container {
+    width: auto;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 
 }
-.user-log{
+
+.user-log {
     width: 100%;
     height: 5%;
     display: flex;
     padding-top: 1%;
 
 }
-.avatar-style{
+
+.avatar-style {
     font-size: 30px;
 }
-.search-bar{
+
+.search-bar {
     width: 100%;
     height: 15%;
     display: flex;
@@ -25,19 +28,23 @@
     align-items: center;
     padding-bottom: 2%;
 }
-.search-brand{
+
+.search-brand {
     display: flex;
 
 }
-.search-icon{
+
+.search-icon {
     margin-left: 10px;
     padding-bottom: 5%;
     font-size: 40px;
 }
-.search-input{
+
+.search-input {
     width: 60%;
 }
-.recipe-box{
+
+.recipe-box {
     width: 100%;
     height: auto;
     display: flex;
@@ -47,28 +54,28 @@
     /* background-color: rgb(15, 38, 110); */
 
 }
-.cards-main{
+
+.cards-main {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     width: auto;
     height: 100%;
 }
 
-.cards-box{
-    /* margin-left: 15%; */
-    display:flex;
+.cards-box {
+
+    display: flex;
     flex-flow: row wrap;
-    /* justify-content: center; */
-    max-width: 1300px;
-    min-width: 1200px;
-    /* width: auto!important; */
-    /* width: 100%; */
+    justify-content: center;
+    /* max-width: 500px; */
+    /* min-width: 500px; */
+    /* width: auto !important; */
+    width: 100%;
     /* background-color: rgb(127, 142, 192); */
     /* the height will be adjust with the data; the box will have a scroll bar */
     height: auto;
 
 
-    
-}
 
+}

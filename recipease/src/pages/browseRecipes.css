@@ -1,4 +1,4 @@
-.box{
+.box {
     width: 100%;
     height: auto;
     display: flex;
@@ -7,28 +7,29 @@
 
 
 }
-.cards-main{
+
+.cards-main {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     width: auto;
     height: 100%;
 
 }
 
-.cards-box{
-    margin-left: 8%;
-    display:flex;
+.cards-box {
+    /* margin-left: 5%; */
+    display: flex;
     flex-flow: row wrap;
     /* justify-content: center; */
-    max-width: 1300px;
-    min-width: 1200px;
+    /* max-width: 1300px; */
+    min-width: 300px;
     /* width: auto!important; */
-    /* width: 100%; */
+    width: 100%;
 
     /* the height will be adjust with the data; the box will have a scroll bar */
     height: auto;
 
 
-    
+
 }

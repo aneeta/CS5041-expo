@@ -12,12 +12,11 @@ const formItemLayout = {
         span: 10,
     },
     wrapperCol: {
-        span: 14,
+        span: 5,
     },
 
     padding: 10
 };
-
 
 
 export default function MethodForm() {
@@ -47,8 +46,7 @@ export default function MethodForm() {
                     <>
                         {fields.map((field) => (
                             <Space key={field.key} align="baseline">
-                                <Form.Item>
-                                </Form.Item>
+
                                 <Form.Item
                                     {...field}
                                     label="Step"
@@ -61,8 +59,11 @@ export default function MethodForm() {
                                     ]}
                                 >
                                     <Input style={{ width: 400 }} />
+
                                 </Form.Item>
-                                <MinusCircleOutlined onClick={() => remove(field.name)} />
+                                <Form.Item>
+                                    <MinusCircleOutlined style={{ marginLeft: "175px" }} onClick={() => remove(field.name)} />
+                                </Form.Item>
                             </Space>
                         ))}
 

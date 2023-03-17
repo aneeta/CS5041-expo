@@ -13,8 +13,8 @@ import DbTest from './src/pages/dbTest';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signInAnonymously } from "firebase/auth";
-import { useList, useListVals } from 'react-firebase-hooks/database';
-import { ref, push, child, serverTimestamp } from 'firebase/database'
+import { useList } from 'react-firebase-hooks/database';
+import { ref } from 'firebase/database'
 import { db, auth } from "./db";
 import BrowseIngPage from './src/pages/browseIngredients';
 import BrowseRecipePage from './src/pages/browseRecipes';
@@ -52,7 +52,7 @@ export default function App() {
     // setSessionData((prev) => ({ ...prev, ...{ allRecipes: sessionData.allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "dataFinal") && (el.message == "Recipe"))) } }))
     // console.log("authenticated")
     // console.log(user)
-  }, [user, authLoading, authError, allSnapshots, allDbLoading, allDbError]);
+  }, [user, authLoading, authError, allSnapshots, allDbLoading, allDbError, ingredients]);
 
   // const sample = snapshots[0].val()
   // const parsed = snapshots.filter(el => ((el.type === "dataFinal") && (el.message === "Recipe"))).map((el, i) => JSON.parse(el.content))

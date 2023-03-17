@@ -23,11 +23,13 @@ export default function RecipeCard(props) {
             <Card.Cover source={{ uri: (props.data.cover ? props.data.cover : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png") }} />
             <Card.Title
                 title={props.data?.name}
+                titleVariant="titleLarge"
+                titleStyle={{ fontWeight: "bold" }}
             />
             <Card.Content>
                 {(props.data.cuisines) ?
                     <>
-                        <Divider orientation='center'>Cuisines</Divider>
+                        <Divider orientation='right'>Cuisines</Divider>
                         <Space size={[0, 4]} wrap>
                             {props.data.cuisines?.map((el, _) => <Tag color="gold">{el}</Tag>)}
                         </Space>
@@ -36,7 +38,7 @@ export default function RecipeCard(props) {
                 }
                 {(props.data.occasions) ?
                     <>
-                        <Divider orientation='center'>Occasions</Divider>
+                        <Divider orientation='right'>Occasions</Divider>
                         <Space size={[0, 4]} wrap>
                             {props.data.occasions?.map((el, _) => <Tag color="geekblue">{el}</Tag>)}
                         </Space>
