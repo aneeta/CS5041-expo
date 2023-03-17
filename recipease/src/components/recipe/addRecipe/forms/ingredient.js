@@ -70,9 +70,8 @@ export default function IngForm() {
                                     ]}
                                 >
                                     <AutoComplete
-                                        style={{ width: 250 }}
+                                        style={{ width: 200 }}
                                         options={ingredients}
-                                        placeholder="Type ingredient, e.g. Chicken"
                                         filterOption={(inputValue, option) =>
                                             option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                                         }
@@ -81,7 +80,6 @@ export default function IngForm() {
                                 <Form.Item
                                     {...field}
                                     label="Amount"
-                                    placeholder="Type amount, e.g. 1 cup"
                                     name={[field.key, 'amount']}
                                     rules={[
                                         {
