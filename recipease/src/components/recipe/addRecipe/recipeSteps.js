@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Button, message, Steps, theme } from 'antd';
-import { LoadingOutlined, SmileOutlined, SolutionOutlined, UserOutlined } from '@ant-design/icons';
 
 import InfoForm from './forms/info';
 import MethodForm from './forms/method';
@@ -17,26 +15,18 @@ const RecipeSteps = () => {
         {
             title: 'Info',
             content: <InfoForm />
-            // content: <InfoForm onChange={handleChange} />,
-            // icon: <SolutionOutlined />,
         },
         {
             title: 'Ingredients',
             content: <IngForm />
-            // content: <IngForm onChange={handleChange} />,
-            // icon: <SolutionOutlined />,
         },
         {
             title: 'Method',
             content: <MethodForm />
-            // content: <MethodForm onChange={handleChange} />,
-            // content: MethodForm(),
-            // icon: <SolutionOutlined />,
         },
         {
             title: 'Done',
             content: <FormSummary />
-            // icon: <SmileOutlined />,
         },
     ];
 

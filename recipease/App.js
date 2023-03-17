@@ -17,6 +17,7 @@ import { useList, useListVals } from 'react-firebase-hooks/database';
 import { ref, push, child, serverTimestamp } from 'firebase/database'
 import { db, auth } from "./db";
 import BrowseIngPage from './src/pages/browseIngredients';
+import BrowseRecipePage from './src/pages/browseRecipes';
 
 
 export default function App() {
@@ -25,6 +26,8 @@ export default function App() {
 
   const [snapshots, dbLoading, dbError] = useList(user ? ref(db, `/public/${user.uid}`) : null);
 
+  const [ingredients, ingDbLoading, ingDbError] = useList(user ? ref(db, `/private/${user.uid}`) : null);
+
   const [allSnapshots, allDbLoading, allDbError] = useList(user ? ref(db, `/public`) : null);
 
   const [sessionData, setSessionData] = useState({})
@@ -32,23 +35,27 @@ export default function App() {
   useEffect(() => {
     signInAnonymously(auth);
     setSessionData({
+      privRef: ref(db, `/private/${user?.uid}`),
       user: user,
       authLoading: authLoading,
       authError: authError,
-      // snapshots: snapshots,
-      // dbLoading: dbLoading,
-      // dbError: dbError,
+      snapshots: snapshots,
+      dbLoading: dbLoading,
+      dbError: dbError,
       allSnapshots: allSnapshots,
       allDbLoading: allDbLoading,
-      allDbError: allDbError
+      allDbError: allDbError,
+      ingredients: ingredients,
+      ingDbLoading: ingDbLoading,
+      ingDbError: ingDbError
     })
-    // setSessionData((prev) => ({ ...prev, ...{ allRecipes: sessionData.allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Recipe"))) } }))
+    // setSessionData((prev) => ({ ...prev, ...{ allRecipes: sessionData.allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "dataFinal") && (el.message == "Recipe"))) } }))
     // console.log("authenticated")
     // console.log(user)
   }, [user, authLoading, authError, allSnapshots, allDbLoading, allDbError]);
 
   // const sample = snapshots[0].val()
-  // const parsed = snapshots.filter(el => ((el.type === "data") && (el.message === "Recipe"))).map((el, i) => JSON.parse(el.content))
+  // const parsed = snapshots.filter(el => ((el.type === "dataFinal") && (el.message === "Recipe"))).map((el, i) => JSON.parse(el.content))
   // console.log(parsed)
 
   const sampleProps = {
@@ -66,11 +73,11 @@ export default function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/profile' element={<ProfilePage />} />
           <Route path='/add-recipe' element={<AddRecipePage />} />
-          <Route path='/browse-recipes' element={<AddRecipePage />} />
+          <Route path='/browse-recipes' element={<BrowseRecipePage />} />
           <Route path='/add-ingredient' element={<AddIngPage />} />
           <Route path='/browse-ingredients' element={<BrowseIngPage />} />
           <Route path='/friends' element={<FriendPage />} />
-          {/* snapshots.filter(el => ((el.type === "data") && (el.message === "Ingredients"))).map((el, i) => JSON.parse(el.content)) */}
+          {/* snapshots.filter(el => ((el.type === "dataFinal") && (el.message === "Ingredients"))).map((el, i) => JSON.parse(el.content)) */}
           <Route path='/recipe/:recipeId' element={<RecipePage {...sampleProps} />} />
           {/* // {
             //   name: parsed[0].infoForm.name,

@@ -11,25 +11,17 @@ const RecipePage = (props) => {
 
     const params = useParams();
     console.log(params.recipeId)
-    // params.projectId; // abc
-    // params.taskId; // 3
 
-    // const [author, obj, data]
+    const recipeFilter = (el) => ((el.type === "dataFinal") && (el.message == "Recipe"))
 
-    const zip = (a, b) => a.map((k, i) => [k, b[i]]);
-
-
-
-    const recipeFilter = (el) => ((el.type === "data") && (el.message == "Recipe"))
-
-    console.log(
-        sessionData.allSnapshots?.map((el, _) => [el.key, el.val()])
-            .map(([k, v], i) => [k, Object.values(v).flat()])
-            .flatMap(([k, v]) => v.map((el, i) => [k, el])) // zip
-            .filter(([k, v]) => recipeFilter(v))
-            .map(([k, v], _) => [k, v.created, JSON.parse(v.content)])
-            .filter(([k, t, v]) => (v.infoForm.name === params.recipeId))[0]
-    )
+    // console.log(
+    //     sessionData.allSnapshots?.map((el, _) => [el.key, el.val()])
+    //         .map(([k, v], i) => [k, Object.values(v).flat()])
+    //         .flatMap(([k, v]) => v.map((el, i) => [k, el])) // zip
+    //         .filter(([k, v]) => recipeFilter(v))
+    //         .map(([k, v], _) => [k, v.created, JSON.parse(v.content)])
+    //         .filter(([k, t, v]) => (v.infoForm.name === params.recipeId))[0]
+    // )
 
     const [data, setData] = useState(["", 0, {}])
 
@@ -47,21 +39,6 @@ const RecipePage = (props) => {
 
     }, [sessionData])
 
-
-    // const  = sessionData.allSnapshots?.map((el, _) => [el.key, el.val()])
-    //     .map(([k, v], i) => [k, Object.values(v).flat()])
-    //     .flatMap(([k, v]) => v.map((el, i) => [k, el])) // zip
-    //     .filter(([k, v]) => recipeFilter(v))
-    //     .map(([k, v], _) => [k, v.created, JSON.parse(v.content)])
-    //     .filter(([k, t, v]) => (v.infoForm.name === params.recipeId))[0]
-
-    // .filter((el) => (el[2].infoForm.name === params.recipeId))[0]
-
-    // .map(([k, v]) => [k, v.flat()]))
-    // .filter(([k, v]) => ((v.type === "data") && (v.message == "Recipe")))
-    // .map(([k, v], _) => [k, v, JSON.parse(v.content)])
-    // .filter(el => (el[2].infoForm.name === params.recipeId))[0]
-    // const author = 
     return (
         <BaseLayout >
             {sessionData.authLoading || sessionData.allDbLoading || !sessionData.allSnapshots ?
@@ -75,6 +52,7 @@ const RecipePage = (props) => {
                         </div>
                         <div className="info-bar">
                             <span className="dishname">{data?.[2]?.infoForm?.name}</span>
+                            <br></br>
                             <span className="dish-info1">Author: </span>
                             <span className="dish-info2">{data?.[0]}</span>
                             <span className="dish-info1">Date: </span>
@@ -89,13 +67,9 @@ const RecipePage = (props) => {
                                 <List
                                     dataSource={data?.[2].ingData}
                                     renderItem={
-                                        // (item) => (<List.Item>{item.name}</List.Item>)
-
                                         (item) => (<List.Item>{`${item.ing} (${item.amount})`}</List.Item>)
-
                                     }
                                 />
-
                             </span>
                         </div>
 
@@ -105,10 +79,7 @@ const RecipePage = (props) => {
                                 <List
                                     dataSource={data?.[2].method}
                                     renderItem={
-                                        // (item) => (<List.Item>{item.name}</List.Item>)
-
                                         (item) => (<List.Item>{`${item.step}`}</List.Item>)
-
                                     }
                                 />
                             </span>
@@ -123,6 +94,5 @@ const RecipePage = (props) => {
     )
 
 }
-
 
 export default RecipePage;

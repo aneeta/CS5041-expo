@@ -1,14 +1,14 @@
 import { ref, push, child, serverTimestamp } from 'firebase/database'
-import { Button, message, Steps, theme } from 'antd';
+import { Button, Steps, theme } from 'antd';
 import { useState, useEffect } from 'react';
-import { db, auth, dbSubspace } from '../../../db';
+import { db, auth } from '../../../db';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signInAnonymously } from "firebase/auth";
-import { useList } from 'react-firebase-hooks/database';
 
 
 function CustomStepper(props) {
     const { token } = theme.useToken();
+
     const contentStyle = {
         lineHeight: '500px',
         textAlign: 'center',
@@ -18,6 +18,7 @@ function CustomStepper(props) {
         border: `1px dashed ${token.colorBorder}`,
         marginTop: 16,
     };
+
     const [user, authLoading, authError] = useAuthState(auth);
 
     useEffect(() => {
@@ -25,24 +26,18 @@ function CustomStepper(props) {
     }, []);
 
     const submitData = () => {
+        const path = (props.formName === "Recipe") ? "public" : "private"
 
-        const reference = push(child(user ? ref(db) : null, `/public/${user.uid}`), {
+        const reference = push(child(user ? ref(db) : null, `/${path}/${user.uid}`), {
             created: serverTimestamp(),
             modified: serverTimestamp(),
-            type: "test",
+            type: "dataFinal",
             message: `${props.formName}`,
             content: JSON.stringify(props.data)
         })
 
-        console.log(JSON.stringify(props.data).length)
-
-        // const [snapshots, dbLoading, dbError] = useList(user ? ref(db, '/public') : null);
-
         console.log(reference)
 
-        // message.success('Added!')
-
-        // reset form
         props.clearFunc({})
         setCurrent(0);
     }
@@ -94,4 +89,5 @@ function CustomStepper(props) {
         </>
     );
 };
+
 export default CustomStepper;

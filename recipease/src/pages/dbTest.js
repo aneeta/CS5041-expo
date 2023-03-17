@@ -3,7 +3,7 @@ import BaseLayout from "../components/base/Layout";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signInAnonymously } from "firebase/auth";
 import { useList } from 'react-firebase-hooks/database';
-import { set, ref, get, query, push, child, serverTimestamp, limitToLast } from 'firebase/database'
+import { remove, ref, get, query, push, child, serverTimestamp, limitToLast } from 'firebase/database'
 import { db, auth } from "../../db";
 import { useContext, useState, useEffect } from 'react';
 import { Context } from "../../Context";
@@ -19,9 +19,10 @@ const DbTest = (props) => {
     const dbRef = ref(db);
 
     const [snapshots, dbLoading, dbError] = useList(user ? ref(db, `/public/${user.uid}`) : null);
+    const [priv, privdbLoading, privdbError] = useList(user ? ref(db, `/private/${user.uid}`) : null);
     const [allSnapshots, allDbLoading, allDbError] = useList(user ? ref(db, `/public`) : null);
 
-    // const allSnapshotsFiltered = allSnapshots.map((el, i) => el.val().filter(el => ((el.type === "data"))))
+    // const allSnapshotsFiltered = allSnapshots.map((el, i) => el.val().filter(el => ((el.type === "dataFinal"))))
     // const recentPostsRef = query(ref(db, 'public/'), limitToLast(10));
 
     // get(recentPostsRef).then((snapshot) => {
@@ -50,14 +51,17 @@ const DbTest = (props) => {
 
     const submitData = () => {
 
-        const reference = set(child(user ? ref(db) : null, `/public/${user.uid}`), {
-            username: 'test'
-            // type: 'test',
-            // created: serverTimestamp(),
-            // modified: serverTimestamp(),
-            // message: "Sample text",
-            // content: JSON.stringify({ val1: 1, val2: 2 })
-        })
+        const reference = remove(child(user ? ref(db) : null, `/private/${user.uid}`) //, []
+            // {
+            //     username: 'test'
+            //     // type: 'test',
+            //     // created: serverTimestamp(),
+            //     // modified: serverTimestamp(),
+            //     // message: "Sample text",
+            //     // content: JSON.stringify({ val1: 1, val2: 2 })
+
+            // }
+        )
 
         console.log(reference)
     }
@@ -75,9 +79,10 @@ const DbTest = (props) => {
                 <List
                     // dataSource={snapshots.map((el, _) => el.val()).filter(el => ((el.type === "recipeaseData") && (el.message("Ingredients"))))}
                     // dataSource={snapshots.map((el, _) => el.val()).filter(el => ((el.type === "Ingredients")))}
-                    dataSource={allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "data") && (el.message == "Ingredients")))} // .filter(el => ((el.type === "data"))) // && (el.message("Recipe"))
+                    // dataSource={allSnapshots.map((el, _) => el.val()).map((el, i) => Object.values(el)).flat().filter(el => ((el.type === "dataFinal") && (el.message == "Ingredients")))} // .filter(el => ((el.type === "dataFinal"))) // && (el.message("Recipe"))
+                    dataSource={priv.ingredients?.map((el, _) => el.val()).map((el, i) => el.content)}
                     renderItem={
-                        (item) => (<List.Item>{item.content}</List.Item>)
+                        (item) => (<List.Item>{item}</List.Item>)
 
                     }
                 />}
